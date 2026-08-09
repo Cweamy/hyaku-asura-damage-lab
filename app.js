@@ -632,14 +632,18 @@ window.HU.app = (function () {
         o.value = k; o.textContent = HU.skillDisplay(k); at.appendChild(o);
       });
 
-    // skill filter options (only for styles that exist)
+    // skill filter options — list every distinct style referenced by a skill,
+    // including legacy names (e.g. Boxing, Street_Fighter, KJ) that have skills
+    // but no full style entry yet, so nothing is unreachable from the filter.
     var flt = $("skillFilter");
     var withSkills = {};
     HU.listableSkills().forEach(function (k) {
       var s = DATA.skills[k].Style;
-      if (s && DATA.styles[s]) withSkills[s] = true;
+      if (s) withSkills[s] = true;
     });
-    Object.keys(withSkills).forEach(function (s) {
+    Object.keys(withSkills).sort(function (a, b) {
+      return styleLabel(a).localeCompare(styleLabel(b));
+    }).forEach(function (s) {
       var o = document.createElement("option");
       o.value = s; o.textContent = styleLabel(s); flt.appendChild(o);
     });
