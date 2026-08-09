@@ -13,11 +13,29 @@ analysis target) is encoded into a shareable config in the URL hash (`#cfg=...`)
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Tool layout: player stats, all-styles damage matrix, balance edit, skills, compare list, analysis, share |
-| `style.css` | Dark slate-900 / emerald-400 theme, glass sticky nav, hero + feature cards |
-| `app.js` | App logic, analysis tools, share-code encode/decode, presets |
+| `index.html` | Tool layout: player stats, all-styles damage matrix, style readouts, skills, compare list, Balance Lab, analysis, share. Sticky section nav with scroll-spy. |
+| `style.css` | Dark slate-900 / emerald-400 theme, glass sticky nav, hero + feature cards, Balance Lab, back-to-top |
+| `app.js` | Application glue: event wiring, share-code encode/decode, presets, nav + scroll-spy, Balance Lab actions (`window.HU.app`) |
+| `render.js` | All DOM rendering: matrix, style, skills, compare, scenario, analysis tools, Balance Lab (`window.HU.render`) |
+| `util.js` | Shared logic & state: `window.HU` — helpers, single mutable `state`, data verification, damage cache |
 | `calc.js` | 1:1 port of `CombatCalculation` (window.HyakuCalc) |
-| `data.js` | Static snapshot of `CombatCalcsData` (window.HYAKU_DATA) |
+| `data.js` | Static snapshot of `CombatCalcsData` (window.HYAKU_DATA) with a `DATA_VERSION` field |
+
+## Architecture notes
+
+- **State lives in one place** (`util.js → HU.state`). `render.js` only reads it and
+  writes the DOM; `app.js` owns state transitions. No module touches the DOM directly
+  except through `HU.render`.
+- **Every value interpolated into HTML is escaped** with `HU.esc()` — share links are
+  user-crafted, so nothing from data or config is trusted as HTML.
+- **Damage is cached.** Results are keyed by a stats/overrides signature, so typing in a
+  stat field doesn't recompute ~90 skills from scratch on every keystroke.
+- **Total skill damage = Dmg/hit × live hit-ratio sum** (`stageData.sum`). The "Hits"
+  edit only changes how many hits feed the hit-count-decay simulation — it never silently
+  changes the authoritative total (previously the two were conflated).
+- **Data health check.** On load the page verifies that every style/skill/scaling
+  reference resolves and shows the `DATA_VERSION` in the health bar, so stale or drifted
+  exports are obvious instead of failing silently.
 
 ## Use locally
 
@@ -43,8 +61,9 @@ Export the styles/skills block as a JS object and write it into `window.HYAKU_DA
 same structure `data.js` already uses. After exporting:
 
 1. `node --check data.js`
-2. Open the page and spot-check: default stats, The_Middle M1/M2 damage, one skill's damage.
-3. Update the "as of" date in `index.html` and the footer.
+2. **Bump `DATA_VERSION`** in `data.js` so existing share links are flagged as stale.
+3. Open the page and spot-check: default stats, The_Middle M1/M2 damage, one skill's damage.
+4. Update the "as of" date in `index.html` and the footer.
 
 ## Verifying calc parity
 

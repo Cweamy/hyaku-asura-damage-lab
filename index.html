@@ -4,28 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hyaku Asura — Damage Lab</title>
+  <meta name="description" content="Damage / balance testing tool mirroring the live Hyaku Asura CombatCalculation + CombatCalcsData. Edit stats, balance skills, and share exact setups." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ================= sticky top nav ================= -->
   <header class="topbar">
     <div class="brand">
       <h1>Hyaku Asura <span>Damage Lab</span></h1>
-      <p class="sub">Damage / balance testing tool · mirrors live CombatCalculation + CombatCalcsData (2026-08-10)</p>
     </div>
+    <nav class="topnav" id="topnav" aria-label="Sections"></nav>
     <div class="actions">
-      <button id="btnShare" class="btn primary" title="Copy a share code for this exact setup">Copy share code</button>
+      <button id="btnShare" class="btn primary" title="Copy a share code for this exact setup">Copy share link</button>
       <button id="btnReset" class="btn ghost" title="Restore live game values and default stats">Reset to live</button>
     </div>
   </header>
 
-  <section class="hero">
+  <!-- ================= data health ================= -->
+  <div class="healthbar">
+    <div class="health" id="healthNote"></div>
+  </div>
+
+  <!-- ================= hero ================= -->
+  <section class="hero" id="hero">
     <div>
       <h2>Test damage. <span class="accent-grad">Balance with data.</span></h2>
       <p class="lede">A damage lab that mirrors the live <code>CombatCalculation</code> engine and <code>CombatCalcsData</code>.
-        Edit your stats, stack skills into a compare list, and tune balance values in real time — then share the exact setup with a single link.</p>
+        Edit stats, stack skills into a compare list, tune balance values in real time — then share the exact setup with a single link.</p>
       <div class="cta">
         <a class="btn primary" href="#player-card">Start testing</a>
-        <button id="btnShareHero" class="btn" title="Copy a share code for this exact setup">Copy share code</button>
+        <a class="btn" href="#balance-card">Balance skills</a>
+        <button id="btnShareHero" class="btn" title="Copy a share code for this exact setup">Copy share link</button>
       </div>
     </div>
     <div class="hero-panel">
@@ -57,7 +67,8 @@
     </div>
   </section>
 
-  <section class="features">
+  <!-- ================= feature cards ================= -->
+  <section class="features" aria-label="Features">
     <div class="feature">
       <div class="ic">#1</div>
       <h3>Skill power rank</h3>
@@ -85,12 +96,13 @@
     </div>
     <div class="feature">
       <div class="ic">⇄</div>
-      <h3>Share configs</h3>
-      <p>Stats, style, balance edits and compare lists live in one shareable link.</p>
+      <h3>Balance Lab</h3>
+      <p>Edit any skill or style with live values, % scaling and one-click reset.</p>
     </div>
   </section>
 
   <main class="layout">
+
     <!-- ============ Player ============ -->
     <section class="card" id="player-card">
       <h2>Player</h2>
@@ -128,20 +140,18 @@
       </div>
     </section>
 
-    <!-- ============ Style (balance edit) ============ -->
+    <!-- ============ Style (selected style readouts) ============ -->
     <section class="card" id="style-card">
       <h2>Selected style
         <select id="styleSelect"></select>
-        <label class="toggle"><input type="checkbox" id="editBalance" /> Edit balance</label>
       </h2>
-      <p class="hint">The matrix above recomputes every style from your stats. This card edits the style selected in the matrix (or dropdown): overrides apply everywhere immediately, and edited styles are marked <span class="live">*edited</span>.</p>
-      <table class="table style-table" id="styleTable"></table>
+      <div class="readouts m12" id="styleReadouts"></div>
     </section>
 
     <!-- ============ Skills ============ -->
     <section class="card" id="skills-card">
       <h2>Skills</h2>
-      <p class="hint">CD / Range / Spd / Power / Hits are editable inline — type a new value and Damage (plus Total, scenario damage and the analysis tabs) recomputes instantly. Grey text is the live value; clearing a box restores it. Hits come from the live stage data (Cascade is 4 hits, etc.); Total = Dmg/hit × hit count. Edited skills are marked <span class="tag editable-tag">edited</span>.</p>
+      <p class="hint">CD / Range / Spd / Power / Hits are editable inline — type a new value and Damage (plus Total, scenario damage and the analysis tabs) recomputes instantly. Grey text is the live value; clearing a box restores it. Hits come from the live stage data; Total = Dmg/hit × live hit-ratio sum. Edited skills are marked <span class="tag editable-tag">edited</span>.</p>
       <div class="toolbar">
         <select id="skillFilter">
           <option value="">All styles</option>
@@ -161,6 +171,45 @@
       <p class="hint" id="compareEmpty">Nothing added yet — use “Compare” in the skills table.</p>
     </section>
 
+    <!-- ============ Balance Lab ============ -->
+    <section class="card" id="balance-card">
+      <h2>Balance Lab <span class="count" id="balCount"></span></h2>
+      <p class="hint">The fast way to tune the game. Pick a skill or style, edit any value (grey = live), or scale everything up/down by 10%. Every change flows straight into the matrix, skills table, compare list and all analysis. <span class="tag editable-tag">edited</span> values are marked with a dot.</p>
+      <div class="bal-layout">
+        <div class="bal-col">
+          <h3>Skills</h3>
+          <div class="toolbar">
+            <select id="balSkill"></select>
+            <span class="count" id="balSkillCount"></span>
+          </div>
+          <div id="balSkillFields" class="bal-fields"></div>
+          <div class="btnrow">
+            <button id="balSkillP10" class="btn" title="Scale all edited/live values up 10%">+10%</button>
+            <button id="balSkillM10" class="btn" title="Scale all edited/live values down 10%">−10%</button>
+            <button id="balSkillReset" class="btn ghost" title="Restore this skill to live values">Reset skill</button>
+            <button id="balSkillClear" class="btn ghost" title="Clear every skill override">Clear all skills</button>
+          </div>
+        </div>
+        <div class="bal-col">
+          <h3>Styles</h3>
+          <div class="toolbar">
+            <select id="balStyle"></select>
+            <span class="count" id="balStyleCount"></span>
+          </div>
+          <div id="balStyleFields" class="bal-fields"></div>
+          <div class="btnrow">
+            <button id="balStyleP10" class="btn" title="Scale all edited/live values up 10%">+10%</button>
+            <button id="balStyleM10" class="btn" title="Scale all edited/live values down 10%">−10%</button>
+            <button id="balStyleReset" class="btn ghost" title="Restore this style to live values">Reset style</button>
+            <button id="balStyleClear" class="btn ghost" title="Clear every style override">Clear all styles</button>
+          </div>
+        </div>
+      </div>
+      <div class="btnrow">
+        <button id="balClearAll" class="btn ghost">Clear all balance edits</button>
+      </div>
+    </section>
+
     <!-- ============ Analysis ============ -->
     <section class="card" id="analysis-card">
       <h2>Analysis
@@ -175,7 +224,7 @@
       </div>
 
       <div id="ana-dps" class="panel">
-        <p class="hint">Every playable skill ranked by DPS = total damage (Dmg/hit × hit count) per cooldown (min 1s). The “vs median” column flags outliers worth re-tuning: <span class="band high">hot</span> ≥ +50% over median, <span class="band low">weak</span> ≤ 40% of median.</p>
+        <p class="hint">Every playable skill ranked by DPS = total damage (Dmg/hit × live hit-ratio sum) per cooldown (min 1s). The “vs median” column flags outliers worth re-tuning: <span class="band high">hot</span> ≥ +50% over median, <span class="band low">weak</span> ≤ 40% of median.</p>
         <div class="table-wrap">
           <table class="table dps-table" id="dpsTable"></table>
         </div>
@@ -226,12 +275,16 @@
   </main>
 
   <footer class="foot">
-    <strong>Hyaku Asura — Damage Lab.</strong> Mirrors <code>CombatCalculation</code> and <code>CombatCalcsData</code> (2026-08-10).
+    <strong>Hyaku Asura — Damage Lab.</strong> Mirrors <code>CombatCalculation</code> and <code>CombatCalcsData</code>.
     Re-export <code>website/data.js</code> whenever the live combat data changes — do not hand-edit as a second source of truth.
   </footer>
 
+  <button id="btnTop" class="top" aria-label="Back to top" title="Back to top">↑</button>
+
   <script src="data.js"></script>
   <script src="calc.js"></script>
+  <script src="util.js"></script>
+  <script src="render.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

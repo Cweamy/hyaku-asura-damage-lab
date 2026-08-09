@@ -334,3 +334,58 @@ details[open] > summary { color: var(--text); }
 .chart .line { fill: none; stroke-width: 2; stroke-linejoin: round; }
 
 .ttk-skills td { font-size: 12px; }
+
+/* ================= top nav ================= */
+.topnav {
+  display: flex; gap: 4px; align-items: center;
+  flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.topnav::-webkit-scrollbar { display: none; }
+.topnav a {
+  color: var(--muted); text-decoration: none; white-space: nowrap;
+  padding: 6px 11px; border-radius: 8px; font-size: 13px;
+  border: 1px solid transparent; transition: color .15s ease, background .15s ease, border-color .15s ease;
+}
+.topnav a:hover { color: var(--text); background: rgba(52, 211, 153, .08); }
+.topnav a.active { color: var(--accent); border-color: rgba(52, 211, 153, .4); background: rgba(52, 211, 153, .1); }
+@media (min-width: 901px) {
+  .topnav { flex: 1; justify-content: center; }
+}
+
+/* ================= data health bar ================= */
+.healthbar { max-width: 1500px; margin: 0 auto; padding: 8px 18px 0; }
+.health { font-size: 12px; color: var(--muted); display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.health .badge { padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.health.ok .badge.ok { background: rgba(52, 211, 153, .14); color: var(--accent); border: 1px solid rgba(52, 211, 153, .4); }
+.health.warn .badge.warn { background: rgba(248, 113, 113, .14); color: var(--bad); border: 1px solid rgba(248, 113, 113, .4); }
+
+/* ================= Balance Lab ================= */
+.bal-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+@media (max-width: 900px) { .bal-layout { grid-template-columns: 1fr; } }
+.bal-col { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--bg); }
+.bal-col h3 { margin: 0 0 8px; font-size: 14px; color: var(--text); }
+.bal-col select { min-width: 210px; }
+.bal-fields { min-height: 70px; }
+.bal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.bal-field { position: relative; font-size: 11px; }
+.bal-field input { width: 100%; padding: 5px 6px; }
+.bal-field .live { color: var(--muted); font-size: 10px; }
+.bal-field .dot {
+  position: absolute; top: 2px; right: 5px; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--accent2); box-shadow: 0 0 0 2px var(--bg);
+}
+.bal-sub { margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.bal-sub h4 { margin: 0 0 8px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.bal-summary { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: var(--muted); }
+.bal-summary strong { color: var(--accent); font-family: var(--mono); }
+
+/* ================= back to top ================= */
+.top {
+  position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: #052e1b; border: none; font-size: 20px; line-height: 1; cursor: pointer;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .15s ease; z-index: 60;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .35);
+}
+.top:hover { transform: translateY(-2px); }
+.top.show { opacity: 1; pointer-events: auto; }

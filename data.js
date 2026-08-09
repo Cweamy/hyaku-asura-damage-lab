@@ -7,6 +7,10 @@
 // ============================================================================
 
 window.HYAKU_DATA = {
+  // Bump this whenever the live CombatCalcsData is re-exported so old share
+  // links can be flagged as stale. Displayed in the "Data health" note.
+  DATA_VERSION: "2026-08-10",
+
   // -- CombatCalculation constants (module top) --
   constants: {
     M1Bonus: 3.5,
