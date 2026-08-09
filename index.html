@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyaku Asura — Damage Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Hyaku Asura <span>Damage Lab</span></h1>
+      <p class="sub">Damage / balance testing tool · mirrors live CombatCalculation + CombatCalcsData (2026-08-10)</p>
+    </div>
+    <div class="actions">
+      <button id="btnShare" class="btn primary" title="Copy a share code for this exact setup">Copy share code</button>
+      <button id="btnReset" class="btn ghost" title="Restore live game values and default stats">Reset to live</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h2>Test damage. <span class="accent-grad">Balance with data.</span></h2>
+      <p class="lede">A damage lab that mirrors the live <code>CombatCalculation</code> engine and <code>CombatCalcsData</code>.
+        Edit your stats, stack skills into a compare list, and tune balance values in real time — then share the exact setup with a single link.</p>
+      <div class="cta">
+        <a class="btn primary" href="#player-card">Start testing</a>
+        <button id="btnShareHero" class="btn" title="Copy a share code for this exact setup">Copy share code</button>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hp-title">Live damage preview</div>
+      <div class="hp-grid">
+        <div class="hp-box">
+          <div class="k">M1 swing</div>
+          <div class="v"><span id="heroM1">—</span></div>
+        </div>
+        <div class="hp-box">
+          <div class="k">M2 heavy</div>
+          <div class="v"><span id="heroM2">—</span></div>
+        </div>
+        <div class="hp-box">
+          <div class="k">Defense</div>
+          <div class="v"><span id="heroDef">—</span><span class="unit">%</span></div>
+        </div>
+        <div class="hp-box">
+          <div class="k">Style</div>
+          <div class="v" style="font-size:17px; color:var(--text);" id="heroStyle">—</div>
+        </div>
+      </div>
+      <div class="hp-chips">
+        <span class="hp-chip">hit-count decay</span>
+        <span class="hp-chip">stamina-aware</span>
+        <span class="hp-chip">share-code configs</span>
+        <span class="hp-chip">editable balance</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="ic">#1</div>
+      <h3>Skill power rank</h3>
+      <p>Every skill ranked by DPS with hot / weak outlier flags vs the median.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">T</div>
+      <h3>Time to kill</h3>
+      <p>Rotations simulated against target HP and defense, hit-count decay included.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">±</div>
+      <h3>Stat sensitivity</h3>
+      <p>What +100 of each stat actually buys for a chosen attack.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">◇</div>
+      <h3>Build optimizer</h3>
+      <p>Split a raw-stat budget across Strength, Muscle and Fat for max damage.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">∿</div>
+      <h3>Damage curves</h3>
+      <p>Damage vs stat and swing-speed charts over the full stat range.</p>
+    </div>
+    <div class="feature">
+      <div class="ic">⇄</div>
+      <h3>Share configs</h3>
+      <p>Stats, style, balance edits and compare lists live in one shareable link.</p>
+    </div>
+  </section>
+
+  <main class="layout">
+    <!-- ============ Player ============ -->
+    <section class="card" id="player-card">
+      <h2>Player</h2>
+      <div class="toolbar" id="presetBar"></div>
+      <div class="grid stats-grid" id="statsGrid">
+        <label>Strength <input type="number" id="stat-Strength" data-stat="Strength" /></label>
+        <label>Muscle <input type="number" id="stat-Muscle" data-stat="Muscle" /></label>
+        <label>Fat <input type="number" id="stat-Fat" data-stat="Fat" /></label>
+        <label>Agility <input type="number" id="stat-Agility" data-stat="Agility" /></label>
+        <label>Attack Speed <input type="number" id="stat-AttackSpeed" data-stat="AttackSpeed" /></label>
+        <label>Durability <input type="number" id="stat-Durability" data-stat="Durability" /></label>
+        <label>StaminaInStat <input type="number" id="stat-StaminaInStat" data-stat="StaminaInStat" /></label>
+        <label>Max Stamina <input type="number" id="stat-MaxStamina" data-stat="MaxStamina" /></label>
+        <label>Basic Atk Dmg % <input type="number" step="0.01" id="mult-BasicAttackDmg" /></label>
+        <label>Critical Dmg % <input type="number" step="0.01" id="mult-CriticalDmg" /></label>
+        <label>Skill Dmg % <input type="number" step="0.01" id="mult-SkillDmg" /></label>
+      </div>
+      <details class="scenario">
+        <summary>Scenario multipliers</summary>
+        <div class="grid stats-grid">
+          <label>Combo hit count (N) <input type="number" id="scn-HitCount" /></label>
+          <label>Simultaneous attackers <input type="number" id="scn-Attackers" /></label>
+          <label>Rhythm charge (0-100) <input type="number" step="0.01" id="scn-Rhythm" /></label>
+        </div>
+        <div class="readouts" id="scenarioReadouts"></div>
+      </details>
+    </section>
+
+    <!-- ============ All styles matrix ============ -->
+    <section class="card" id="matrix-card">
+      <h2>All styles — damage matrix</h2>
+      <p class="hint" id="matrixHint"></p>
+      <div class="table-wrap matrix-wrap">
+        <table class="table matrix-table" id="styleMatrix"></table>
+      </div>
+    </section>
+
+    <!-- ============ Style (balance edit) ============ -->
+    <section class="card" id="style-card">
+      <h2>Selected style
+        <select id="styleSelect"></select>
+        <label class="toggle"><input type="checkbox" id="editBalance" /> Edit balance</label>
+      </h2>
+      <p class="hint">The matrix above recomputes every style from your stats. This card edits the style selected in the matrix (or dropdown): overrides apply everywhere immediately, and edited styles are marked <span class="live">*edited</span>.</p>
+      <table class="table style-table" id="styleTable"></table>
+    </section>
+
+    <!-- ============ Skills ============ -->
+    <section class="card" id="skills-card">
+      <h2>Skills</h2>
+      <div class="toolbar">
+        <select id="skillFilter">
+          <option value="">All styles</option>
+        </select>
+        <input type="search" id="skillSearch" placeholder="Search skill…" />
+        <span class="count" id="skillCount"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="table skills-table" id="skillsTable"></table>
+      </div>
+    </section>
+
+    <!-- ============ Compare list ============ -->
+    <section class="card" id="compare-card">
+      <h2>Compare list <span class="count" id="compareCount"></span></h2>
+      <div id="compareList" class="compare-list"></div>
+      <p class="hint" id="compareEmpty">Nothing added yet — use “Compare” in the skills table.</p>
+    </section>
+
+    <!-- ============ Analysis ============ -->
+    <section class="card" id="analysis-card">
+      <h2>Analysis
+        <select id="anaTarget" title="Analyze this attack"></select>
+      </h2>
+      <div class="tabs" id="anaTabs">
+        <button class="tab active" data-tab="dps">Skill power rank</button>
+        <button class="tab" data-tab="ttk">Time to kill</button>
+        <button class="tab" data-tab="sens">Stat sensitivity</button>
+        <button class="tab" data-tab="opt">Build optimizer</button>
+        <button class="tab" data-tab="curves">Curves</button>
+      </div>
+
+      <div id="ana-dps" class="panel">
+        <p class="hint">Every playable skill ranked by DPS = damage per cooldown (min 1s). The “vs median” column flags outliers worth re-tuning: <span class="band high">hot</span> ≥ +50% over median, <span class="band low">weak</span> ≤ 40% of median.</p>
+        <div class="table-wrap">
+          <table class="table dps-table" id="dpsTable"></table>
+        </div>
+      </div>
+
+      <div id="ana-ttk" class="panel" hidden>
+        <p class="hint">Simulates your compare list as a repeating rotation against a target. Damage falls off with the hit-count decay. Empty compare list = pure M1 spam.</p>
+        <div class="grid stats-grid ana-inputs">
+          <label>Target HP <input type="number" id="ana-hp" /></label>
+          <label>Target defense % <input type="number" id="ana-def" /></label>
+        </div>
+        <div id="ttkReadouts" class="readouts m12"></div>
+        <div id="ttkDetail" class="m12"></div>
+      </div>
+
+      <div id="ana-sens" class="panel" hidden>
+        <p class="hint">What +100 raw points of each stat buys for the analyzed attack (everything else held fixed). Strength/Muscle/Fat feed damage directly; Agility does not; Attack Speed changes swing speed, not hit damage.</p>
+        <div class="table-wrap">
+          <table class="table sens-table" id="sensTable"></table>
+        </div>
+      </div>
+
+      <div id="ana-opt" class="panel" hidden>
+        <p class="hint">Spend a raw-stat budget across Strength + Muscle + Fat (step 250) to maximize the analyzed attack. Agility / Attack Speed / Durability stay at your current values.</p>
+        <div class="grid stats-grid ana-inputs">
+          <label>Stat budget (STR+Muscle+Fat) <input type="number" id="ana-budget" /></label>
+        </div>
+        <div id="optResults" class="m12"></div>
+      </div>
+
+      <div id="ana-curves" class="panel" hidden>
+        <div id="curveCharts"></div>
+      </div>
+    </section>
+
+    <!-- ============ Share ============ -->
+    <section class="card" id="share-card">
+      <h2>Share / import config</h2>
+      <p class="hint">The code stores stats, style, balance edits and your compare list. Anyone opening the link gets the same setup.</p>
+      <textarea id="shareText" rows="4" spellcheck="false" placeholder="Paste a config code here and press Import…"></textarea>
+      <div class="btnrow">
+        <button id="btnImport" class="btn">Import config</button>
+        <button id="btnCopy" class="btn primary">Copy code</button>
+        <button id="btnExport" class="btn ghost">Export full code</button>
+      </div>
+      <p class="status" id="status"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <strong>Hyaku Asura — Damage Lab.</strong> Mirrors <code>CombatCalculation</code> and <code>CombatCalcsData</code> (2026-08-10).
+    Re-export <code>website/data.js</code> whenever the live combat data changes — do not hand-edit as a second source of truth.
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
