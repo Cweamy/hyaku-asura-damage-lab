@@ -93,6 +93,22 @@
     return out;
   }
 
+  function stageOf(key) {
+    return (DATA.stageData && DATA.stageData[key]) || { hits: 1, sum: 1 };
+  }
+
+  function effHits(key) {
+    var ov = state.overrides[key];
+    if (ov && ov.hits != null) return Math.max(1, Math.round(Number(ov.hits)));
+    return stageOf(key).hits;
+  }
+
+  function effRatio(key) {
+    var ov = state.overrides[key];
+    if (ov && ov.hits != null) return Math.max(1, Math.round(Number(ov.hits)));
+    return stageOf(key).sum;
+  }
+
   function getScaling(key, skill) {
     var live = DATA.skillScaling[key];
     var fallback = skill && skill.Style ? DATA.styles[skill.Style] : null;
@@ -179,6 +195,9 @@
         var v = o[f];
         if (v !== "" && v != null && isFinite(Number(v))) c[f] = Number(v);
       });
+      if (o.hits !== "" && o.hits != null && isFinite(Number(o.hits))) {
+        c.hits = Math.max(1, Math.round(Number(o.hits)));
+      }
       if (o.scaling && typeof o.scaling === "object") {
         var s = {};
         SCALING_FIELDS.forEach(function (f) {
@@ -551,6 +570,7 @@
       var dmg = Calc.ComputeSkillDamage({
         skill: s, scaling: scaling, stats: state.stats, skillDmg: state.mults.SkillDmg,
       });
+      var total = dmg * effRatio(k);
       var tags = "";
       if (s.HyperArmour) tags += '<span class="tag hp">HA</span>';
       if (s.GrabSkill) tags += '<span class="tag grab">grab</span>';
@@ -568,6 +588,15 @@
           ' title="live: ' + (live[key] != null ? live[key] : "—") + '"' + cls + " /></td>";
       }
 
+      function hitsCell() {
+        var val = ov.hits !== undefined ? ov.hits : "";
+        var cls = ov.hits !== undefined ? ' class="editable"' : "";
+        var liveH = stageOf(k).hits;
+        return '<td class="num"><input class="skill-edit" data-skill="' + k + '" data-edit="hits"' +
+          ' type="number" step="1" min="1" value="' + val + '" placeholder="' + liveH + '"' +
+          ' title="live: ' + liveH + '"' + cls + " /></td>";
+      }
+
       return "<tr>" +
         "<td>" + (s.DisplayName || k) + tags + "</td>" +
         "<td>" + (s.Style ? styleLabel(s.Style) : "—") + "</td>" +
@@ -576,6 +605,8 @@
         cell("speed", "Speed") +
         cell("power", "Power") +
         '<td class="num"><strong class="dmg-cell">' + fmt(dmg) + "</strong></td>" +
+        hitsCell() +
+        '<td class="num"><strong class="total-cell">' + fmt(total) + "</strong></td>" +
         '<td class="num">' +
         (added
           ? '<span class="tag hp">added</span>'
@@ -587,8 +618,9 @@
     $("skillsTable").innerHTML =
       "<thead><tr>" +
       "<th>Skill</th><th>Style</th><th class='num'>CD</th><th class='num'>Range</th>" +
-      "<th class='num'>Spd</th><th class='num'>Power</th><th class='num'>Damage</th><th></th>" +
-      "</tr></thead><tbody>" + (rows || '<tr><td colspan="8" class="hint">No skills match.</td></tr>') + "</tbody>";
+      "<th class='num'>Spd</th><th class='num'>Power</th><th class='num'>Dmg/hit</th>" +
+      "<th class='num'>Hits</th><th class='num'>Total</th><th></th>" +
+      "</tr></thead><tbody>" + (rows || '<tr><td colspan="10" class="hint">No skills match.</td></tr>') + "</tbody>";
   }
 
   function bindSkillsTable() {
@@ -621,6 +653,8 @@
         });
         var dmgCell = tr.querySelector(".dmg-cell");
         if (dmgCell) dmgCell.textContent = fmt(dmg);
+        var totalCell = tr.querySelector(".total-cell");
+        if (totalCell) totalCell.textContent = fmt(dmg * effRatio(k));
         input.classList.toggle("editable", ov[f] !== undefined);
         var tag = tr.querySelector(".editable-tag");
         if (tag) tag.style.display = edited ? "" : "none";
@@ -656,7 +690,7 @@
       });
       var decay = Calc.GetHitCountDamageDecay(state.scn.HitCount);
       var atkStun = Calc.GetMultiAttackerStunMultiplier(state.scn.Attackers);
-      var scnDmg = dmg * decay * atkStun;
+      var scnDmg = dmg * effRatio(k) * decay * atkStun;
 
       var ov = state.overrides[k] || {};
 
@@ -665,7 +699,10 @@
         return '<label>' + SD_FIELDS[f] +
           '<input type="number" step="0.01" data-ovfield="' + f + '" data-skill="' + k + '" value="' + val + '" />' +
           '<span class="live">live: ' + sd[SD_FIELDS[f]] + "</span></label>";
-      }).join("");
+      }).join("") +
+        '<label>Hits' +
+        '<input type="number" step="1" min="1" data-ovfield="hits" data-skill="' + k + '" value="' + (ov.hits !== undefined ? ov.hits : "") + '" />' +
+        '<span class="live">live: ' + stageOf(k).hits + "</span></label>";
 
       var scalingBox = "";
       if (DATA.skillScaling[k] || s.Style) {
@@ -689,7 +726,7 @@
         '<div class="compare-head">' +
         '<span class="name">' + (s.DisplayName || k) + ' <span class="tag">' + styleLabel(s.Style || "?") + "</span></span>" +
         '<span class="dmg">' + fmt(dmg) +
-        " <span class='live'>scenario " + fmt(scnDmg) + " · after def " + fmt(Calc.MitigatedDamage(scnDmg, state.stats)) + "</span></span>" +
+        " <span class='live'>total " + fmt(dmg * effRatio(k)) + " · scenario " + fmt(scnDmg) + " · after def " + fmt(Calc.MitigatedDamage(scnDmg, state.stats)) + "</span></span>" +
         '<button class="btn ghost" data-remove="' + k + '">Remove</button>' +
         "</div>" +
         "<div class='compare-grid'>" + editInputs + "</div>" +
@@ -758,7 +795,7 @@
     if (target === "M2") return Calc.ComputeM2Damage({ style: getStyle(state.style), stats: st, criticalDmg: mults.CriticalDmg });
     if (!DATA.skills[target]) return 0;
     var s = getSkill(target);
-    return Calc.ComputeSkillDamage({ skill: s, scaling: getScaling(target, s), stats: st, skillDmg: mults.SkillDmg });
+    return Calc.ComputeSkillDamage({ skill: s, scaling: getScaling(target, s), stats: st, skillDmg: mults.SkillDmg }) * effRatio(target);
   }
 
   function renderAnalysis() {
@@ -784,8 +821,9 @@
       var cd = typeof sd.Cooldown === "number" ? sd.Cooldown : 0;
       if (cd <= 0) return;
       var dmg = Calc.ComputeSkillDamage({ skill: s, scaling: getScaling(k, s), stats: state.stats, skillDmg: state.mults.SkillDmg });
+      var total = dmg * effRatio(k);
       var cycle = Math.max(cd, 1);
-      rows.push({ k: k, name: s.DisplayName || k, style: s.Style, cd: cd, range: sd.Range, speed: sd.Speed, dmg: dmg, dps: dmg / cycle });
+      rows.push({ k: k, name: s.DisplayName || k, style: s.Style, cd: cd, range: sd.Range, speed: sd.Speed, dmg: dmg, total: total, dps: total / cycle });
     });
     rows.sort(function (a, b) { return b.dps - a.dps; });
     var median = rows.length ? rows[Math.floor(rows.length / 2)].dps : 0;
@@ -801,6 +839,7 @@
         "<td>" + (r.style ? styleLabel(r.style) : "—") + "</td>" +
         '<td class="num">' + r.cd + '</td><td class="num">' + fmt(r.range) + '</td><td class="num">' + fmt(r.speed) + "</td>" +
         '<td class="num">' + fmt(r.dmg) + "</td>" +
+        '<td class="num">' + fmt(r.total) + "</td>" +
         '<td class="num ' + bandV + '"><strong>' + fmt(r.dps) + "</strong></td>" +
         '<td class="num ' + bandV + '">' + relTxt + "</td>" +
         "</tr>";
@@ -809,8 +848,8 @@
     $("dpsTable").innerHTML =
       "<thead><tr>" +
       "<th class='num'>#</th><th>Skill</th><th>Style</th><th class='num'>CD</th>" +
-      "<th class='num'>Range</th><th class='num'>Spd</th><th class='num'>Damage</th>" +
-      "<th class='num'>DPS</th><th class='num'>vs median</th>" +
+      "<th class='num'>Range</th><th class='num'>Spd</th><th class='num'>Dmg/hit</th>" +
+      "<th class='num'>Total</th><th class='num'>DPS</th><th class='num'>vs median</th>" +
       "</tr></thead><tbody>" + html + "</tbody>";
   }
 
@@ -834,12 +873,15 @@
       return { ttk: t, hits: hits, sum: sum };
     }
 
-    var names = [], damages = [], cds = [], casts = [];
+    var names = [], damages = [], perHits = [], cds = [], casts = [], hitsList = [];
     state.compare.forEach(function (k) {
       var s = getSkill(k);
       var sd = s.SkillData;
       names.push(s.DisplayName || k);
-      damages.push(Calc.ComputeSkillDamage({ skill: s, scaling: getScaling(k, s), stats: state.stats, skillDmg: state.mults.SkillDmg }));
+      var perHit = Calc.ComputeSkillDamage({ skill: s, scaling: getScaling(k, s), stats: state.stats, skillDmg: state.mults.SkillDmg });
+      perHits.push(perHit);
+      damages.push(perHit * effRatio(k));
+      hitsList.push(effHits(k));
       cds.push(typeof sd.Cooldown === "number" && sd.Cooldown > 0 ? sd.Cooldown : 0.5);
       casts.push(Math.min(Math.max(1 / Math.max(sd.Speed || 1, 0.1), 0.05), 2.5));
     });
@@ -887,9 +929,10 @@
     var detail = "";
     if (names.length) {
       detail = '<table class="table ttk-skills"><thead><tr><th>Rotation</th><th class="num">CD</th>' +
-        '<th class="num">Cast (est)</th><th class="num">Damage</th></tr></thead><tbody>' +
+        '<th class="num">Cast (est)</th><th class="num">Hits</th><th class="num">Dmg/hit</th><th class="num">Total</th></tr></thead><tbody>' +
         names.map(function (n, i) {
           return "<tr><td>" + n + '</td><td class="num">' + cds[i] + '</td><td class="num">' + fmt(casts[i]) +
+            '</td><td class="num">' + hitsList[i] + '</td><td class="num">' + fmt(perHits[i]) +
             '</td><td class="num">' + fmt(damages[i]) + "</td></tr>";
         }).join("") + "</tbody></table>";
     } else {

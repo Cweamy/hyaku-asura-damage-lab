@@ -141,7 +141,7 @@
     <!-- ============ Skills ============ -->
     <section class="card" id="skills-card">
       <h2>Skills</h2>
-      <p class="hint">CD / Range / Spd / Power are editable inline — type a new value and Damage (plus the analysis tabs) recomputes instantly. Grey text is the live value; clearing a box restores it. Edited skills are marked <span class="tag editable-tag">edited</span>.</p>
+      <p class="hint">CD / Range / Spd / Power / Hits are editable inline — type a new value and Damage (plus Total, scenario damage and the analysis tabs) recomputes instantly. Grey text is the live value; clearing a box restores it. Hits come from the live stage data (Cascade is 4 hits, etc.); Total = Dmg/hit × hit count. Edited skills are marked <span class="tag editable-tag">edited</span>.</p>
       <div class="toolbar">
         <select id="skillFilter">
           <option value="">All styles</option>
@@ -175,7 +175,7 @@
       </div>
 
       <div id="ana-dps" class="panel">
-        <p class="hint">Every playable skill ranked by DPS = damage per cooldown (min 1s). The “vs median” column flags outliers worth re-tuning: <span class="band high">hot</span> ≥ +50% over median, <span class="band low">weak</span> ≤ 40% of median.</p>
+        <p class="hint">Every playable skill ranked by DPS = total damage (Dmg/hit × hit count) per cooldown (min 1s). The “vs median” column flags outliers worth re-tuning: <span class="band high">hot</span> ≥ +50% over median, <span class="band low">weak</span> ≤ 40% of median.</p>
         <div class="table-wrap">
           <table class="table dps-table" id="dpsTable"></table>
         </div>
