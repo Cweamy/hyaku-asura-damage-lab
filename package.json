@@ -1,0 +1,11 @@
+{
+  "name": "hyaku-asura-damage-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Client-side damage / balance testing tool mirroring the live Hyaku Asura CombatCalculation + CombatCalcsData.",
+  "scripts": {
+    "test": "node test.js",
+    "serve": "python -m http.server 8000"
+  },
+  "license": "UNLICENSED"
+}

@@ -69,7 +69,19 @@ same structure `data.js` already uses. After exporting:
 
 `calc.js` formulas were smoke-tested in Node against the Lua sources
 (e.g. `EffectiveStat(2000 Strength) = 1725`, The_Middle M1 = 248.88, M2 = 278.74,
-hit-count decay, stamina drains). Re-run a smoke test after touching either side.
+hit-count decay, stamina drains).
+
+There is an automated suite that locks this down and checks data integrity:
+
+```powershell
+cd website
+node test.js        # or: npm test
+```
+
+It asserts calc parity, catches orphan `skillScaling` / broken `styleOrder` references
+(hard failures), and prints the same data-health warnings the on-page health bar shows
+(missing styles, missing `stageData`). Run it after touching `calc.js`, `util.js`, or
+re-exporting `data.js`.
 
 ## Balance-pass workflow
 
