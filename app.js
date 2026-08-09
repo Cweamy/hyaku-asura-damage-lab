@@ -545,6 +545,8 @@
     var rows = keys.map(function (k) {
       var s = getSkill(k);
       var sd = s.SkillData;
+      var live = (DATA.skills[k] && DATA.skills[k].SkillData) || {};
+      var ov = state.overrides[k] || {};
       var scaling = getScaling(k, s);
       var dmg = Calc.ComputeSkillDamage({
         skill: s, scaling: scaling, stats: state.stats, skillDmg: state.mults.SkillDmg,
@@ -554,15 +556,26 @@
       if (s.GrabSkill) tags += '<span class="tag grab">grab</span>';
       if (s.CounterSkill) tags += '<span class="tag counter">counter</span>';
       if (s.IFrame) tags += '<span class="tag ifr">iframe</span>';
+      var edited = Object.keys(ov).length > 0;
+      if (edited) tags += '<span class="tag editable-tag">edited</span>';
       var added = state.compare.indexOf(k) !== -1;
+
+      function cell(f, key) {
+        var val = ov[f] !== undefined ? ov[f] : "";
+        var cls = ov[f] !== undefined ? ' class="editable"' : "";
+        return '<td class="num"><input class="skill-edit" data-skill="' + k + '" data-edit="' + f + '"' +
+          ' type="number" step="0.01" value="' + val + '" placeholder="' + (live[key] != null ? live[key] : "") + '"' +
+          ' title="live: ' + (live[key] != null ? live[key] : "—") + '"' + cls + " /></td>";
+      }
+
       return "<tr>" +
         "<td>" + (s.DisplayName || k) + tags + "</td>" +
         "<td>" + (s.Style ? styleLabel(s.Style) : "—") + "</td>" +
-        '<td class="num">' + sd.Cooldown + "</td>" +
-        '<td class="num">' + sd.Range + "</td>" +
-        '<td class="num">' + sd.Speed + "</td>" +
-        '<td class="num">' + fmt(sd.Power) + "</td>" +
-        '<td class="num"><strong>' + fmt(dmg) + "</strong></td>" +
+        cell("cooldown", "Cooldown") +
+        cell("range", "Range") +
+        cell("speed", "Speed") +
+        cell("power", "Power") +
+        '<td class="num"><strong class="dmg-cell">' + fmt(dmg) + "</strong></td>" +
         '<td class="num">' +
         (added
           ? '<span class="tag hp">added</span>'
@@ -586,6 +599,43 @@
       if (state.compare.indexOf(k) === -1) state.compare.push(k);
       renderSkills();
       renderCompare();
+    });
+
+    $("skillsTable").addEventListener("input", function (e) {
+      var input = e.target;
+      if (input.tagName !== "INPUT" || !input.dataset.edit) return;
+      var k = input.dataset.skill;
+      var f = input.dataset.edit;
+      var ov = state.overrides[k] || (state.overrides[k] = {});
+      var v = input.value;
+      if (v === "") delete ov[f];
+      else ov[f] = numOr(v, 0);
+      var edited = Object.keys(ov).length > 0;
+      if (!edited) delete state.overrides[k];
+
+      var tr = input.closest("tr");
+      if (tr) {
+        var s = getSkill(k);
+        var dmg = Calc.ComputeSkillDamage({
+          skill: s, scaling: getScaling(k, s), stats: state.stats, skillDmg: state.mults.SkillDmg,
+        });
+        var dmgCell = tr.querySelector(".dmg-cell");
+        if (dmgCell) dmgCell.textContent = fmt(dmg);
+        input.classList.toggle("editable", ov[f] !== undefined);
+        var tag = tr.querySelector(".editable-tag");
+        if (tag) tag.style.display = edited ? "" : "none";
+        else if (edited) {
+          var nameCell = tr.querySelector("td");
+          if (nameCell) {
+            var sp = document.createElement("span");
+            sp.className = "tag editable-tag";
+            sp.textContent = "edited";
+            nameCell.appendChild(sp);
+          }
+        }
+      }
+      renderCompare();
+      renderAnalysis();
     });
   }
 
@@ -613,8 +663,7 @@
       var editInputs = Object.keys(SD_FIELDS).map(function (f) {
         var val = ov[f] !== undefined ? ov[f] : "";
         return '<label>' + SD_FIELDS[f] +
-          '<input type="number" step="0.01" data-ovfield="' + f + '" data-skill="' + k + '" value="' + val + '" ' +
-          (state.edit ? "" : "disabled") + ' />' +
+          '<input type="number" step="0.01" data-ovfield="' + f + '" data-skill="' + k + '" value="' + val + '" />' +
           '<span class="live">live: ' + sd[SD_FIELDS[f]] + "</span></label>";
       }).join("");
 
@@ -626,8 +675,7 @@
           var val = sov[f] !== undefined ? sov[f] : "";
           var live = base[f] != null ? base[f] : 0;
           return '<label>' + f.replace("Scaling", "") +
-            '<input type="number" step="0.01" data-scalingfield="' + f + '" data-skill="' + k + '" value="' + val + '" ' +
-            (state.edit ? "" : "disabled") + ' />' +
+            '<input type="number" step="0.01" data-scalingfield="' + f + '" data-skill="' + k + '" value="' + val + '" />' +
             '<span class="live">' + (DATA.skillScaling[k] ? "live: " : "style: ") + live + "</span></label>";
         }).join("");
         scalingBox =

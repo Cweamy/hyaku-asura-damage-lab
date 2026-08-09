@@ -237,6 +237,11 @@ select { font-family: inherit; }
 }
 .table .live { color: var(--muted); font-size: 10px; }
 .editable { border-color: var(--accent2) !important; }
+.tag.editable-tag { border-color: var(--accent2); color: var(--accent2); }
+
+.table .skill-edit { width: 58px; padding: 3px 5px; font-size: 12px; text-align: right; }
+.table .skill-edit::placeholder { color: var(--muted); opacity: .7; }
+.table .skill-edit.editable { border-color: var(--accent2); box-shadow: 0 0 0 2px rgba(248, 113, 113, .15); }
 
 .table-wrap { overflow-x: auto; max-height: 560px; overflow-y: auto; }
 
