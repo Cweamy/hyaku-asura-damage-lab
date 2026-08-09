@@ -591,9 +591,10 @@ window.HU.app = (function () {
     var w = HU.verifyData();
     var v = DATA.DATA_VERSION ? DATA.DATA_VERSION : "unknown";
     if (w.length) {
-      el.innerHTML = '<span class="badge warn">data check</span> ' +
-        "<strong>Version " + esc(v) + "</strong> — " + esc(w.length) + " warning" + (w.length === 1 ? "" : "s") + ". " +
-        esc(w.join(" · "));
+      var list = "<ul>" + w.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      el.innerHTML = '<span class="badge warn">data check</span> <strong>Version ' + esc(v) + "</strong> — " +
+        w.length + " warning" + (w.length === 1 ? "" : "s") +
+        ' <details class="health-details"><summary>show</summary>' + list + "</details>";
       el.className = "health warn";
     } else {
       el.innerHTML = '<span class="badge ok">ok</span> <strong>Version ' + esc(v) + "</strong> — data verified, all style/skill references resolve.";

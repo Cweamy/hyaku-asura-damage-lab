@@ -158,8 +158,10 @@ code { font-family: var(--mono); background: var(--bg); padding: 1px 5px; border
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 15px;
+  scroll-margin-top: 84px; /* clear the sticky top bar when nav-scrolling */
   transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
+#hero { scroll-margin-top: 84px; }
 .card:hover {
   transform: translateY(-2px);
   border-color: rgba(52, 211, 153, .4);
@@ -359,6 +361,11 @@ details[open] > summary { color: var(--text); }
 .health .badge { padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
 .health.ok .badge.ok { background: rgba(52, 211, 153, .14); color: var(--accent); border: 1px solid rgba(52, 211, 153, .4); }
 .health.warn .badge.warn { background: rgba(248, 113, 113, .14); color: var(--bad); border: 1px solid rgba(248, 113, 113, .4); }
+.health-details { display: inline-block; margin-left: 2px; }
+.health-details summary { cursor: pointer; color: var(--accent); font-size: 12px; display: inline; }
+.health-details[open] summary { color: var(--text); }
+.health-details ul { margin: 6px 0 0; padding-left: 18px; }
+.health-details li { margin: 2px 0; }
 
 /* ================= Balance Lab ================= */
 .bal-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
