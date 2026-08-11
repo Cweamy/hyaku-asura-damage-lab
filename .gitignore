@@ -1,0 +1,3 @@
+# Parked tooling: never commits balance edits to the live module or data.js.
+# Kept untracked on purpose (mirror reality, investigate anomalies only).
+apply-balance.js
