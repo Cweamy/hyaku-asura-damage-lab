@@ -3,7 +3,8 @@
 // Run:  node test.js   (or: npm test)
 //
 // Loads data.js + calc.js + util.js in a Node sandbox (no DOM) and checks:
-//   1. calc parity against known-good values (mirrors the README spot-checks)
+//   1. calc parity against live-verified values (README spot-checks + 2026-08-11
+//      re-verified anchors after the statLimits re-sync; see BALANCE_CHANGELOG.md)
 //   2. structural data integrity (orphan skillScaling / styleOrder refs)
 //   3. reports data-health warnings (missing styles / missing stageData)
 //
@@ -51,14 +52,30 @@ console.log("\nHyaku Asura — Damage Lab tests\n");
 console.log("Calc parity:");
 ok(!!D.DATA_VERSION, "data has DATA_VERSION (" + D.DATA_VERSION + ")");
 ok(!!C, "HyakuCalc loaded");
-closeTo(C.EffectiveStat(2000, D.statLimits.Strength), 1725, 1e-6, "EffectiveStat(2000 Str) = 1725");
+closeTo(C.EffectiveStat(2000, D.statLimits.Strength), 1150, 1e-6, "EffectiveStat(2000 Str) = 1150");
+closeTo(C.EffectiveStat(2000, D.statLimits.Muscle), 1080, 1e-6, "EffectiveStat(2000 Mus) = 1080");
 
 var tm = HU.getStyle("The_Middle");
 var stats = HU.state.stats; // default balanced build
 var m1 = C.ComputeM1Damage({ style: tm, stats: stats, basicAttackDmg: 1 });
 var m2 = C.ComputeM2Damage({ style: tm, stats: stats, criticalDmg: 1 });
-closeTo(m1, 277.40, 0.02, "The_Middle M1 = 277.40");
-closeTo(m2, 310.68, 0.02, "The_Middle M2 = 310.68");
+closeTo(m1, 216.7264, 0.02, "The_Middle M1 = 216.7264");
+closeTo(m2, 242.733568, 0.02, "The_Middle M2 = 242.733568");
+
+// Skill parity anchors, captured live from CombatCalculation 2026-08-11 at the
+// default build. Legacy styles (Street_Fighter/KJ/Boxing) resolve to nil and
+// fall back to 0.75 * SkillBonus in both the game and the site.
+closeTo(C.SkillStatMultiplier(null, stats), 4.5, 1e-9, "SkillStatMultiplier(nil) = 4.5 (legacy fallback)");
+var skillCases = [
+  ["Payback (The_Middle)", "The_Middle", 13.5, 217.4439792857143],
+  ["Cranium_Break (Demon_Fist)", "Demon_Fist", 30, 474.72859285714289],
+  ["Avidya (Kure)", "Kure", 13.5, 198.56462946428574],
+  ["Hadouken (Street_Fighter legacy)", "Street_Fighter", 14.5, 65.25],
+  ["Ravage (KJ legacy)", "KJ", 23, 103.5],
+];
+skillCases.forEach(function (c) {
+  closeTo(C.ComputeSkillDamage({ power: c[2], skill: { Style: c[1] }, stats: stats }), c[3], 1e-9, "ComputeSkillDamage " + c[0] + " = " + c[3]);
+});
 
 // 2. structural integrity (hard failures)
 console.log("\nStructural integrity:");
@@ -68,6 +85,33 @@ ok(orphanScaling.length === 0, "no orphan skillScaling keys (got " + orphanScali
 
 var orderMissing = (D.styleOrder || []).filter(function (s) { return !styles.has(s); });
 ok(orderMissing.length === 0, "styleOrder fully resolves (got " + orderMissing.length + ": " + orderMissing.join(", ") + ")");
+
+// 2b. live-module dump parity: every field the dump carries must appear in data.js
+// with an equal value (dump = combat-calcs-data.dump.json, exported from the live
+// CombatCalcsData module). Catches a re-export that drops or renames fields.
+console.log("\nLive-module dump parity (combat-calcs-data.dump.json):");
+var dump = require("./combat-calcs-data.dump.json");
+var dumpSkills = Object.keys(dump.Skills || {});
+var dumpBad = 0;
+function sdVal(skill, key) {
+  var sd = skill.SkillData || {};
+  var v = sd[key];
+  if (v != null && typeof v === "object" && "Base" in v) return v.Base;
+  return v;
+}
+dumpSkills.forEach(function (name) {
+  var dsk = dump.Skills[name];
+  var s = D.skills[name];
+  if (!s) { dumpBad++; console.log("  ✗ MISSING SKILL: " + name); return; }
+  ["Cooldown", "Style", "DisplayName"].forEach(function (f) {
+    if (s[f] !== dsk[f]) { dumpBad++; console.log("  ✗ " + name + "." + f + ": data=" + s[f] + " dump=" + dsk[f]); }
+  });
+  ["Cooldown", "Power", "Range", "Speed"].forEach(function (f) {
+    var a = sdVal(s, f), b = sdVal(dsk, f);
+    if (Math.abs(a - b) > 1e-9) { dumpBad++; console.log("  ✗ " + name + ".SkillData." + f + ": data=" + a + " dump=" + b); }
+  });
+});
+ok(dumpBad === 0, "all " + dumpSkills.length + " dump skills match data.js field-for-field (incl. SkillData)");
 
 // 3. data-health warnings (reported; drives the on-page health bar)
 console.log("\nData health warnings:");

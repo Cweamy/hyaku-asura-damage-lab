@@ -110,9 +110,9 @@ window.HyakuCalc = (function () {
     var Str = EffectiveStat(ReadStat(Stats, "Strength"), StatLimits.Strength);
     var Mus = EffectiveStat(Muscle, StatLimits.Muscle);
     var Fat = EffectiveStat(ReadStat(Stats, "Fat"), StatLimits.Fat);
-    var StrAmt = (Str / 1000) * (Scaling.StrengthScaling || 1) * (Muscle > 1000 ? 0.5 : 1) * GetStrengthEffectiveness(Muscle);
-    var MusAmt = (Mus / 1400) * (((Scaling.UpperMuscleScaling || 1) + (Scaling.LowerMuscleScaling || 1)) / 2);
-    var FatAmt = (Fat / 1500) * (Scaling.FatScaling || 1);
+    var StrAmt = (Str / 1000) * (Scaling.StrengthScaling != null ? Scaling.StrengthScaling : 1) * (Muscle > 1000 ? 0.5 : 1) * GetStrengthEffectiveness(Muscle);
+    var MusAmt = (Mus / 1400) * (((Scaling.UpperMuscleScaling != null ? Scaling.UpperMuscleScaling : 1) + (Scaling.LowerMuscleScaling != null ? Scaling.LowerMuscleScaling : 1)) / 2);
+    var FatAmt = (Fat / 1500) * (Scaling.FatScaling != null ? Scaling.FatScaling : 1);
     return (1 + StrAmt + MusAmt + FatAmt) * 0.75 * SkillBonus;
   }
 
@@ -122,9 +122,9 @@ window.HyakuCalc = (function () {
     var Str = EffectiveStat(ReadStat(Stats, "Strength"), StatLimits.Strength);
     var Mus = EffectiveStat(ReadStat(Stats, "Muscle"), StatLimits.Muscle);
     var Fat = EffectiveStat(ReadStat(Stats, "Fat"), StatLimits.Fat);
-    var StrAmt = (Str / 700) * (Scaling.StrengthScaling || 1) * GetStrengthEffectiveness(ReadStat(Stats, "Muscle"));
-    var MusAmt = (Mus / 1000) * (((Scaling.UpperMuscleScaling || 1) + (Scaling.LowerMuscleScaling || 1)) / 2);
-    var FatAmt = (Fat / 700) * (Scaling.FatScaling || 1);
+    var StrAmt = (Str / 700) * (Scaling.StrengthScaling != null ? Scaling.StrengthScaling : 1) * GetStrengthEffectiveness(ReadStat(Stats, "Muscle"));
+    var MusAmt = (Mus / 1000) * (((Scaling.UpperMuscleScaling != null ? Scaling.UpperMuscleScaling : 1) + (Scaling.LowerMuscleScaling != null ? Scaling.LowerMuscleScaling : 1)) / 2);
+    var FatAmt = (Fat / 700) * (Scaling.FatScaling != null ? Scaling.FatScaling : 1);
     return (1 + StrAmt + MusAmt + FatAmt) * 0.75;
   }
 

@@ -73,8 +73,10 @@ python -m http.server 8000
 ## Verifying calc parity
 
 `calc.js` formulas were smoke-tested in Node against the Lua sources
-(e.g. `EffectiveStat(2000 Strength) = 1725`, The_Middle M1 = 277.40, M2 = 310.68,
-hit-count decay, stamina drains).
+(e.g. `EffectiveStat(2000 Strength) = 1150`, The_Middle M1 = 216.7264, M2 = 242.733568,
+hit-count decay, stamina drains). Anchors were re-verified against the live
+`CombatCalculation` module on 2026-08-11 (post statLimits re-sync); see
+`../BALANCE_CHANGELOG.md`.
 
 There is an automated suite that locks this down and checks data integrity:
 
