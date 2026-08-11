@@ -1,0 +1,2633 @@
+{
+ "Styles": {
+  "Aikido": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 15,
+   "BaseDamageM2": 16,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.02,
+   "LowerMuscleScaling": 2.4,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.08,
+   "M1Range": "Average",
+   "M1RangeMul": 0.98,
+   "M1Speed": 1,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.7,
+   "UpperMuscleScaling": 2.4
+  },
+  "Basic": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 5,
+   "BaseDamageM2": 8.5,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1Speed": 0.9,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 0.9,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 3
+  },
+  "BoxingLongGuard": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.2,
+   "BaseDamageM1": 13.5,
+   "BaseDamageM2": 15,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.005,
+   "LowerMuscleScaling": 1.5,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1Speed": 1.45,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.8,
+   "M2Range": "Above Average",
+   "M2Speed": 1.1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 1.7
+  },
+  "Cat": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 18,
+   "BaseDamageM2": 22,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.5,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1Speed": 0.95,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.9,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.65,
+   "UpperMuscleScaling": 2.5
+  },
+  "Demon_Fist": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "BaseDamageM1": 16,
+   "BaseDamageM2": 15.5,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 2.8,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1Speed": 1.65,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.9,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.58,
+   "UpperMuscleScaling": 2.9
+  },
+  "Grand-WarAxe": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 24.5,
+   "BaseDamageM2": 25.5,
+   "BaseStun": 0.75,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.9,
+   "LowerMuscleScaling": 2.1,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1RangeMul": 1.12,
+   "M1Speed": 2,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 2.3,
+   "M2StaminaCost": 7,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.18,
+   "UpperMuscleScaling": 2.1
+  },
+  "Karate": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "BaseDamageM1": 13.5,
+   "BaseDamageM2": 14,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.02,
+   "LowerMuscleScaling": 2.2,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1RangeMul": 1.02,
+   "M1Speed": 1,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.9,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.815,
+   "UpperMuscleScaling": 2.2
+  },
+  "Kazu": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 18,
+   "BaseDamageM2": 22,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.6,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1Speed": 0.95,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.9,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.65,
+   "UpperMuscleScaling": 2.7
+  },
+  "Kickboxing": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.2,
+   "BaseDamageM1": 16.2,
+   "BaseDamageM2": 17.55,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.02,
+   "LowerMuscleScaling": 1.5,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1RangeMul": 1.05,
+   "M1Speed": 1.5515,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.8,
+   "M2Range": "Above Average",
+   "M2Speed": 1.177,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.65,
+   "UpperMuscleScaling": 1.7
+  },
+  "Kujin": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 18,
+   "BaseDamageM2": 22,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.5,
+   "FatScaling": 0.04,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1Speed": 0.95,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.65,
+   "UpperMuscleScaling": 2.7
+  },
+  "Kung_Fu": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 5.3,
+   "BaseDamageM2": 8.5,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1Speed": 0.8,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.8,
+   "M2Range": "Above Average",
+   "M2Speed": 0.7,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 3
+  },
+  "Kure": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "BaseDamageM1": 15,
+   "BaseDamageM2": 20.16,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.6,
+   "FatScaling": 0.03,
+   "LowerMuscleScaling": 2.3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1RangeMul": 0.98,
+   "M1Speed": 1.21,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 0.95,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 2.5
+  },
+  "Muay_Thai": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "BaseDamageM1": 14,
+   "BaseDamageM2": 15,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 2.8,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1RangeMul": 0.97,
+   "M1Speed": 0.9,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 2.4
+  },
+  "Niko": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "BaseDamageM1": 14.75,
+   "BaseDamageM2": 20.06,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.04,
+   "LowerMuscleScaling": 2.3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1Speed": 1.1449,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.9,
+   "M2Range": "Above Average",
+   "M2Speed": 1.07,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 2.4
+  },
+  "Raishin": {
+   "AgilityScaling": 0.15,
+   "AttackSpeedScaling": 0.3,
+   "BaseDamageM1": 14,
+   "BaseDamageM2": 18,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "High",
+   "M1RangeMul": 1.03,
+   "M1Speed": 1.5,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.8,
+   "M2Range": "Above Average",
+   "M2Speed": 1.2,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.8,
+   "UpperMuscleScaling": 1.2
+  },
+  "Reinhold": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 23.5,
+   "BaseDamageM2": 24.5,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 2.6,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1Speed": 0.8,
+   "M1StaminaCost": 5,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 0.8,
+   "M2StaminaCost": 7,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.2,
+   "TMThreshold": 1000,
+   "UpperMuscleScaling": 2.6
+  },
+  "Sky": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 18,
+   "BaseDamageM2": 22,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.6,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1Speed": 0.95,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.9,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.65,
+   "UpperMuscleScaling": 2.7
+  },
+  "Sumo": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 22.5,
+   "BaseDamageM2": 23.5,
+   "BaseStun": 0.73,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.9,
+   "LowerMuscleScaling": 2.1,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1RangeMul": 1.02,
+   "M1Speed": 0.7,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 7,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.18,
+   "UpperMuscleScaling": 2.1
+  },
+  "Taekwondo": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 14,
+   "BaseDamageM2": 15,
+   "BaseStun": 0.7,
+   "ComboLife": 1.15,
+   "Endlag": 0.7,
+   "FatScaling": 0.02,
+   "LowerMuscleScaling": 2.4,
+   "M1ComboCooldowns": [
+    0.32,
+    0.38,
+    0.44,
+    1.55
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1RangeMul": 1.05,
+   "M1Speed": 1.1,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.7,
+   "UpperMuscleScaling": 1.5
+  },
+  "The_Middle": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 16,
+   "BaseDamageM2": 17,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.04,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Above Average",
+   "M1Speed": 1,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.68,
+   "UpperMuscleScaling": 3
+  },
+  "WarAxe": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 16.5,
+   "BaseDamageM2": 19,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.6,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1Speed": 0.95,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.9,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.75,
+   "UpperMuscleScaling": 2.1
+  },
+  "Wrestling": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 22.5,
+   "BaseDamageM2": 23.5,
+   "BaseStun": 0.73,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.04,
+   "LowerMuscleScaling": 2.5,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.1,
+   "M1Range": "Average",
+   "M1RangeMul": 0.97,
+   "M1Speed": 0.8,
+   "M1StaminaCost": 5,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 0.8,
+   "M2StaminaCost": 7,
+   "MaxAttackSpeedScale": 0.8,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.18,
+   "TMThreshold": 1000,
+   "UpperMuscleScaling": 2.5
+  },
+  "Ya": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.2,
+   "BaseDamageM1": 17.75,
+   "BaseDamageM2": 18.5,
+   "BaseStun": 0.73,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.06,
+   "M1Range": "High",
+   "M1Speed": 0.9,
+   "M1StaminaCost": 3,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.8,
+   "M2Range": "High",
+   "M2Speed": 1.1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 1,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.675,
+   "UpperMuscleScaling": 2.7
+  },
+  "Yuzuki-no-Mai": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.2,
+   "BaseDamageM1": 17.75,
+   "BaseDamageM2": 18.5,
+   "BaseStun": 0.73,
+   "ComboLife": 1.3,
+   "Endlag": 0.7,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 2.7,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.06,
+   "M1Range": "High",
+   "M1Speed": 0.9,
+   "M1StaminaCost": 3,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.8,
+   "M2Range": "High",
+   "M2Speed": 1.1,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 1,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.675,
+   "UpperMuscleScaling": 2.7
+  },
+  "Zhin": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0,
+   "BaseDamageM1": 18,
+   "BaseDamageM2": 22,
+   "BaseStun": 0.7,
+   "ComboLife": 1.3,
+   "Endlag": 0.6,
+   "FatScaling": 0.1,
+   "LowerMuscleScaling": 3,
+   "M1ComboCooldowns": [
+    0,
+    0,
+    0,
+    1.3
+   ],
+   "M1ComboLifes": [
+    1.3,
+    1.3,
+    1.3,
+    1.4
+   ],
+   "M1Endlag": 0.12,
+   "M1Range": "High",
+   "M1Speed": 0.95,
+   "M1StaminaCost": 4,
+   "M2Cooldown": 2.4,
+   "M2Endlag": 0.4,
+   "M2MaxAttackSpeedScale": 0.75,
+   "M2Range": "Above Average",
+   "M2Speed": 0.9,
+   "M2StaminaCost": 6.5,
+   "MaxAttackSpeedScale": 0.9,
+   "MaxCombo": 4,
+   "StrengthScaling": 0.65,
+   "UpperMuscleScaling": 2.1
+  }
+ },
+ "SkillScaling": {
+  "A_Just_Vengeance": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 1.5
+  },
+  "Avidya": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.6,
+   "StrengthScaling": 2.2,
+   "UpperMuscleScaling": 0.6
+  },
+  "Bear_Hug": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 3,
+   "StrengthScaling": 0.3,
+   "UpperMuscleScaling": 3
+  },
+  "Binding_Hold": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Blazing_Dragon": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Body_Drop": {
+   "AgilityScaling": 0.1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 1.313,
+   "LowerMuscleScaling": 1.67,
+   "StrengthScaling": 0.2,
+   "UpperMuscleScaling": 1.67
+  },
+  "Brute_Throw": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 3.5,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 3.5
+  },
+  "Bulldoze": {
+   "AgilityScaling": 0.1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0.89,
+   "LowerMuscleScaling": 1,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 1
+  },
+  "Cascade": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.2,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 0.45,
+   "UpperMuscleScaling": 0
+  },
+  "ChokeSlam": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.188,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.758,
+   "StrengthScaling": 0.188,
+   "UpperMuscleScaling": 2
+  },
+  "Cleaving_Fang": {
+   "AgilityScaling": 0.7,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.5,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 0
+  },
+  "Counter_Cut": {
+   "AgilityScaling": 1.27,
+   "AttackSpeedScaling": 1.27,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.905,
+   "UpperMuscleScaling": 0.635
+  },
+  "Cranium_Break": {
+   "AgilityScaling": 0.1,
+   "AttackSpeedScaling": 0.2,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 6,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 5
+  },
+  "Crushing_Throw": {
+   "AgilityScaling": 0.1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 1.15,
+   "LowerMuscleScaling": 2,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 2
+  },
+  "Devil_Lance": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.5,
+   "UpperMuscleScaling": 0.5
+  },
+  "Dream_Walking": {
+   "AgilityScaling": 0.8,
+   "AttackSpeedScaling": 0.2,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Ear_Clap": {
+   "AgilityScaling": 0.2,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.1,
+   "StrengthScaling": 1.3,
+   "UpperMuscleScaling": 4
+  },
+  "Earth_Shatter": {
+   "AgilityScaling": 0.1,
+   "AttackSpeedScaling": 0.2,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.2,
+   "UpperMuscleScaling": 5
+  },
+  "Eblow_Cut": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.5,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 0.5
+  },
+  "ElbowDrop": {
+   "AgilityScaling": 0.375,
+   "AttackSpeedScaling": 0,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.558,
+   "StrengthScaling": 0.225,
+   "UpperMuscleScaling": 1.558
+  },
+  "Feinting_Elbow": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.5,
+   "UpperMuscleScaling": 0.5
+  },
+  "Flash_Fire": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Flicker_Jab": {
+   "AgilityScaling": 0.635,
+   "AttackSpeedScaling": 1.27,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.397,
+   "UpperMuscleScaling": 0
+  },
+  "Gazelle_Punch": {
+   "AgilityScaling": 1.27,
+   "AttackSpeedScaling": 1.27,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.905,
+   "UpperMuscleScaling": 0.635
+  },
+  "Hadouken": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Hammer_Palm": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 3,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 3
+  },
+  "Hardpoint": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0.5
+  },
+  "Head_Slam": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 0
+  },
+  "Hyakuretsukyaku": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Iron_Breaker": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Kicking": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.25,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.5,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Knee_Strike": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.75,
+   "StrengthScaling": 2.85,
+   "UpperMuscleScaling": 0
+  },
+  "Lightning_Flash": {
+   "AgilityScaling": 0.43,
+   "AttackSpeedScaling": 0.25,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.8,
+   "UpperMuscleScaling": 0
+  },
+  "Lion_Bite": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.6,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 0.6
+  },
+  "Liver_Blow": {
+   "AgilityScaling": 0.635,
+   "AttackSpeedScaling": 1.27,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.651,
+   "UpperMuscleScaling": 0.635
+  },
+  "MaDeedKalok": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.75,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Mountain_Breaker": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.6,
+   "StrengthScaling": 0.6,
+   "UpperMuscleScaling": 0.6
+  },
+  "Nerve_Strike": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 0
+  },
+  "Oblique_Kick": {
+   "AgilityScaling": 0.8,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.4,
+   "StrengthScaling": 1.2,
+   "UpperMuscleScaling": 0
+  },
+  "OneTwo": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.127,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.27,
+   "UpperMuscleScaling": 1.143
+  },
+  "Palm_Barrage": {
+   "AgilityScaling": 0.1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 1.203,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 1
+  },
+  "Payback": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 1.5
+  },
+  "Predictive_Strikes": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.3,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 5,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 4
+  },
+  "Promised_Suffering": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.5,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Pure_Taekwondo": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.9,
+   "StrengthScaling": 1,
+   "UpperMuscleScaling": 0
+  },
+  "Questionmark_Kick": {
+   "AgilityScaling": 0.8,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.3,
+   "StrengthScaling": 1.5,
+   "UpperMuscleScaling": 0
+  },
+  "Ravage": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.8,
+   "UpperMuscleScaling": 0
+  },
+  "Right_Koken": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.5,
+   "UpperMuscleScaling": 0.5
+  },
+  "Rock_Punch": {
+   "AgilityScaling": 0,
+   "AttackSpeedScaling": 0.1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 3,
+   "StrengthScaling": 0.5,
+   "UpperMuscleScaling": 3
+  },
+  "Rolling": {
+   "AgilityScaling": 0.8,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.4,
+   "StrengthScaling": 1.4,
+   "UpperMuscleScaling": 0
+  },
+  "Roundhouse_Kick": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.5,
+   "StrengthScaling": 1.7,
+   "UpperMuscleScaling": 0
+  },
+  "Shoryuken": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Six_Seiken": {
+   "AgilityScaling": 1.5,
+   "AttackSpeedScaling": 1,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1,
+   "UpperMuscleScaling": 0.5
+  },
+  "Spinning_Backfist": {
+   "AgilityScaling": 0.8,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 1.3,
+   "UpperMuscleScaling": 0.5
+  },
+  "Spinning_Elbow": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.25,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0.5
+  },
+  "StarDrop": {
+   "AgilityScaling": 1.2,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Steel_Blast": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 3,
+   "UpperMuscleScaling": 0
+  },
+  "Suplex": {
+   "AgilityScaling": 0.038,
+   "AttackSpeedScaling": 0.188,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.7,
+   "StrengthScaling": 0.188,
+   "UpperMuscleScaling": 2.5
+  },
+  "Swift_Kick": {
+   "AgilityScaling": 0.8,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.4,
+   "StrengthScaling": 1.3,
+   "UpperMuscleScaling": 0
+  },
+  "Tatsumaki": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Thunderclap": {
+   "AgilityScaling": 0.6,
+   "AttackSpeedScaling": 0.6,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.3,
+   "UpperMuscleScaling": 0
+  },
+  "Triple_Kick": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0.35,
+   "StrengthScaling": 2.2,
+   "UpperMuscleScaling": 0
+  },
+  "Weeping_Willow": {
+   "AgilityScaling": 0.3,
+   "AttackSpeedScaling": 0.4,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 0
+  },
+  "Whirl_Slam": {
+   "AgilityScaling": 0.075,
+   "AttackSpeedScaling": 0.113,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 1.85,
+   "StrengthScaling": 0.188,
+   "UpperMuscleScaling": 2
+  },
+  "WhirlwindSpin": {
+   "AgilityScaling": 1,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2,
+   "UpperMuscleScaling": 0
+  },
+  "Write_em_all_down": {
+   "AgilityScaling": 0.5,
+   "AttackSpeedScaling": 0.5,
+   "FatScaling": 0,
+   "LowerMuscleScaling": 0,
+   "StrengthScaling": 2.5,
+   "UpperMuscleScaling": 2
+  }
+ },
+ "Skills": {
+  "Flash_Fire": {
+   "StaminaCost": -1,
+   "Style": "Niko",
+   "HyperArmour": true,
+   "ClashPriority": 2,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 3,
+    "Power": 15
+   },
+   "DisplayName": "Flash Fire"
+  },
+  "ChokeSlam": {
+   "ClashPriority": 1,
+   "DisplayName": "Choke Slam",
+   "StaminaCost": -1,
+   "Style": "Wrestling",
+   "IFrame": true,
+   "GrabSkill": true,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 23.68
+   },
+   "HyperArmour": true
+  },
+  "Nerve_Strike": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Aikido",
+   "IFrame": true,
+   "Cooldown": 30,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 5,
+    "Power": 14.5
+   },
+   "DisplayName": "Nerve Strike"
+  },
+  "Dream_Walking": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Raishin",
+   "IFrame": true,
+   "Cooldown": 30,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 5,
+    "Power": 15.75
+   },
+   "DisplayName": "Dream Walking"
+  },
+  "Lightning_Flash": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Raishin",
+   "IFrame": true,
+   "Cooldown": 35,
+   "IsExtender": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 35,
+    "Power": 14
+   },
+   "DisplayName": "Lightning Flash"
+  },
+  "MinotaurRoar": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Devil_Lance": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Karate",
+   "IsExtender": true,
+   "IsPure": true,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 12
+   },
+   "DisplayName": "Devil Lance"
+  },
+  "Feinting_Elbow": {
+   "StaminaCost": -1,
+   "Style": "Karate",
+   "IFrame": true,
+   "ClashPriority": 2,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 15.2
+   },
+   "DisplayName": "Feinting Elbow"
+  },
+  "Hardpoint": {
+   "StaminaCost": -1,
+   "Style": "Aikido",
+   "ClashPriority": 1,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 5,
+    "Power": 15
+   },
+   "DisplayName": "Hardpoint"
+  },
+  "Avidya": {
+   "StaminaCost": -1,
+   "Style": "Kure",
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 5,
+    "Power": 13.5
+   },
+   "DisplayName": "Avidyā"
+  },
+  "Earth_Shatter": {
+   "StaminaCost": -1,
+   "Style": "Demon_Fist",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 14
+   },
+   "DisplayName": "Earth Shatter"
+  },
+  "Elbow_Cut": {
+   "StaminaCost": -1,
+   "Style": "Kure",
+   "IsExtender": true,
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 5,
+    "Power": 13
+   },
+   "DisplayName": "Elbow Cut"
+  },
+  "Bear_Hug": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Reinhold",
+   "GrabSkill": true,
+   "Cooldown": 50,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 50,
+    "Range": 4.3,
+    "Power": 24
+   },
+   "DisplayName": "Bear Hug"
+  },
+  "Brute_Throw": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Reinhold",
+   "GrabSkill": true,
+   "Cooldown": 50,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 50,
+    "Range": 4,
+    "Power": 26
+   },
+   "DisplayName": "Brute Throw"
+  },
+  "DivilJone_Orbital": {
+   "StaminaCost": 0,
+   "DisplayName": "Roar",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Mountain_Breaker": {
+   "StaminaCost": -1,
+   "Style": "Kure",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 17
+   },
+   "DisplayName": "Mountain_Breaker"
+  },
+  "ChangeStance": {
+   "StaminaCost": -1,
+   "Style": "Sumo",
+   "IgnoreOffensiveCheck": true,
+   "ClashPriority": 1,
+   "IsSkill": false,
+   "SkillData": {
+    "Speed": 0,
+    "Cooldown": 0,
+    "Range": 0,
+    "Power": 0
+   },
+   "DisplayName": "Change Stance"
+  },
+  "A_Just_Vengeance": {
+   "StaminaCost": -1,
+   "Style": "The_Middle",
+   "HyperArmour": true,
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 18
+   },
+   "DisplayName": "A Just Vengeance"
+  },
+  "MaDeedKalok": {
+   "ClashPriority": 1,
+   "DisplayName": "Ma Deed Kalok",
+   "StaminaCost": -1,
+   "Style": "Muay_Thai",
+   "IsExtender": true,
+   "IFrame": true,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 6,
+    "Power": 12
+   },
+   "GrabSkill": true
+  },
+  "Ear_Clap": {
+   "StaminaCost": -1,
+   "Style": "Demon_Fist",
+   "IsExtender": true,
+   "ClashPriority": 1,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1.15,
+    "Cooldown": 35,
+    "Range": 5,
+    "Power": 13
+   },
+   "DisplayName": "Ear Clap"
+  },
+  "Crushing_Throw": {
+   "ClashPriority": 1,
+   "DisplayName": "Crushing Throw",
+   "GrabSkill": true,
+   "StaminaCost": -1,
+   "Style": "Sumo",
+   "HyperArmour": true,
+   "IsPure": true,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 24
+   },
+   "IFrame": true
+  },
+  "Cascade": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Raishin",
+   "GrabSkill": true,
+   "Cooldown": 50,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 50,
+    "Range": 5,
+    "Power": 9.5
+   },
+   "DisplayName": "Cascade"
+  },
+  "Knee_Strike": {
+   "ClashPriority": 1,
+   "DisplayName": "Knee Strike",
+   "StaminaCost": -1,
+   "Style": "Muay_Thai",
+   "GrabSkill": true,
+   "IsPure": true,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 6,
+    "Power": 16
+   },
+   "Cooldown": 40
+  },
+  "DivilJone_Rampage": {
+   "StaminaCost": 0,
+   "DisplayName": "Roar",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "DivilJoneRoar": {
+   "StaminaCost": 0,
+   "DisplayName": "Roar",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Cleaving_Fang": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Taekwondo",
+   "GrabSkill": true,
+   "Cooldown": 40,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1.5,
+    "Cooldown": 40,
+    "Range": 6,
+    "Power": 16
+   },
+   "DisplayName": "Cleaving Fang"
+  },
+  "Hadouken": {
+   "StaminaCost": -1,
+   "Style": "Street_Fighter",
+   "ClashPriority": 1,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 14.5
+   },
+   "DisplayName": "Hadouken"
+  },
+  "Kicking": {
+   "StaminaCost": -1,
+   "Style": "The_Middle",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 18.2
+   },
+   "DisplayName": "Kicking"
+  },
+  "ElbowDrop": {
+   "StaminaCost": -1,
+   "Style": "Wrestling",
+   "HyperArmour": true,
+   "ClashPriority": 1,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1.5,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 23.5
+   },
+   "DisplayName": "Elbow Drop"
+  },
+  "Block": {
+   "CounterSkill": false,
+   "IgnoreLevel": 0,
+   "Style": "",
+   "Cooldown": 0.5,
+   "IsSkill": false,
+   "ClashPriority": 1,
+   "DisplayName": "Block",
+   "IFrame": false,
+   "StaminaCost": 0,
+   "Stages": {
+    "Slam": {
+     "Blockbreak": true,
+     "Ragdoll": 2.3,
+     "DamageRatio": 1,
+     "IFrame": true,
+     "Stun": 0.75
+    }
+   },
+   "Clashable": false,
+   "GrabSkill": false,
+   "HyperArmour": false,
+   "SkillData": {
+    "Speed": {
+     "Base": 1.5
+    },
+    "Cooldown": {
+     "Base": 60
+    },
+    "Range": {
+     "Base": 6
+    },
+    "Power": {
+     "Base": 29.5
+    }
+   },
+   "Silenceable": true
+  },
+  "Gazelle_Punch": {
+   "StaminaCost": -1,
+   "Style": "BoxingLongGuard",
+   "HyperArmour": true,
+   "ClashPriority": 2,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 4.5,
+    "Power": 15
+   },
+   "DisplayName": "Gazelle Punch"
+  },
+  "Hyakuretsukyaku": {
+   "StaminaCost": -1,
+   "Style": "Street_Fighter",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 20.93
+   },
+   "DisplayName": "Hyakuretsukyaku"
+  },
+  "Iron_Breaker": {
+   "StaminaCost": -1,
+   "Style": "Niko",
+   "IsExtender": true,
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 8,
+    "Power": 13
+   },
+   "DisplayName": "Iron Breaker"
+  },
+  "Head_Slam": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Taekwondo",
+   "IFrame": true,
+   "Cooldown": 35,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 14
+   },
+   "DisplayName": "Head Slam"
+  },
+  "Binding_Hold": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Aikido",
+   "IFrame": true,
+   "Cooldown": 30,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 5,
+    "Power": 15.5
+   },
+   "DisplayName": "Binding Hold"
+  },
+  "MinotaurLeap": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Flying_Knee": {
+   "StaminaCost": -1,
+   "Style": "Karate",
+   "ClashPriority": 1,
+   "Cooldown": 10,
+   "SkillData": {
+    "Speed": 0,
+    "Cooldown": 0,
+    "Range": 0,
+    "Power": 0
+   },
+   "DisplayName": "Flying Knee"
+  },
+  "MinotaurCharge": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "MinotaurStomp": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "MinotaurPunch": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Cranium_Break": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Demon_Fist",
+   "GrabSkill": true,
+   "Cooldown": 50,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 50,
+    "Range": 5,
+    "Power": 30
+   },
+   "DisplayName": "Cranium Break"
+  },
+  "Bulldoze": {
+   "StaminaCost": -1,
+   "Style": "Sumo",
+   "ClashPriority": 1,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 22
+   },
+   "DisplayName": "Bulldoze"
+  },
+  "Body_Drop": {
+   "StaminaCost": -1,
+   "Style": "Sumo",
+   "HyperArmour": true,
+   "ClashPriority": 1,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 25
+   },
+   "DisplayName": "Body Drop"
+  },
+  "Blazing_Dragon": {
+   "StaminaCost": -1,
+   "Style": "Street_Fighter",
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 8,
+    "Power": 15
+   },
+   "DisplayName": "Blazing Dragon"
+  },
+  "Hammer_Palm": {
+   "StaminaCost": -1,
+   "Style": "Reinhold",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 21
+   },
+   "DisplayName": "Hammer Palm"
+  },
+  "DivilJone_StrongRight": {
+   "StaminaCost": 0,
+   "DisplayName": "Roar",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Flicker_Jab": {
+   "StaminaCost": -1,
+   "Style": "BoxingLongGuard",
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 12
+   },
+   "DisplayName": "Flicker Jab"
+  },
+  "Counter_Cut": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Boxing",
+   "IFrame": true,
+   "Cooldown": 35,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 16
+   },
+   "DisplayName": "Counter Cut"
+  },
+  "MinotaurEnragedRoar": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Lion_Bite": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Kure",
+   "GrabSkill": true,
+   "Cooldown": 35,
+   "IsExtender": true,
+   "SkillData": {
+    "Speed": 1.2,
+    "Cooldown": 35,
+    "Range": 35,
+    "Power": 13
+   },
+   "DisplayName": "Lion's Bite"
+  },
+  "Liver_Blow": {
+   "StaminaCost": -1,
+   "Style": "Boxing",
+   "IsExtender": true,
+   "ClashPriority": 2,
+   "Cooldown": 25,
+   "SkillData": {
+    "Speed": 1.1,
+    "Cooldown": 25,
+    "Range": 4,
+    "Power": 12
+   },
+   "DisplayName": "Liver Blow"
+  },
+  "Steel_Blast": {
+   "ClashPriority": 2,
+   "StaminaCost": -1,
+   "Style": "Niko",
+   "HyperArmour": true,
+   "Cooldown": 30,
+   "IsExtender": false,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 3,
+    "Power": 15
+   },
+   "DisplayName": "Steel Blast"
+  },
+  "Suplex": {
+   "ClashPriority": 1,
+   "DisplayName": "Suplex",
+   "GrabSkill": true,
+   "StaminaCost": -1,
+   "Style": "Wrestling",
+   "HyperArmour": true,
+   "IsPure": true,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 26.85
+   },
+   "IFrame": true
+  },
+  "Rock_Punch": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Reinhold",
+   "HyperArmour": true,
+   "IsPure": true,
+   "Cooldown": 80,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 90,
+    "Range": 5,
+    "Power": 27
+   },
+   "DisplayName": "Rock Punch"
+  },
+  "Whirl_Slam": {
+   "ClashPriority": 1,
+   "DisplayName": "Whirl Slam",
+   "StaminaCost": -1,
+   "Style": "Wrestling",
+   "IFrame": true,
+   "GrabSkill": true,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1.5,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 25.5
+   },
+   "HyperArmour": true
+  },
+  "OneTwo": {
+   "StaminaCost": -1,
+   "Style": "Boxing",
+   "Cooldown": 8,
+   "SkillData": {
+    "Speed": 0,
+    "Cooldown": 0,
+    "Range": 0,
+    "Power": 0
+   },
+   "DisplayName": "One-Two"
+  },
+  "Shoryuken": {
+   "StaminaCost": -1,
+   "Style": "Street_Fighter",
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "MissEndlag": 0.9,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 7,
+    "Power": 16
+   },
+   "DisplayName": "Shoryuken"
+  },
+  "Weeping_Willow": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Niko",
+   "IFrame": true,
+   "Cooldown": 30,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 5,
+    "Power": 16.25
+   },
+   "DisplayName": "Weeping Willow"
+  },
+  "Payback": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "The_Middle",
+   "HyperArmour": true,
+   "Cooldown": 35,
+   "IsExtender": true,
+   "SkillData": {
+    "Speed": 1.15,
+    "Cooldown": 35,
+    "Range": 5,
+    "Power": 13.5
+   },
+   "DisplayName": "Payback"
+  },
+  "Questionmark_Kick": {
+   "StaminaCost": -1,
+   "Style": "Taekwondo",
+   "IsExtender": true,
+   "ClashPriority": 1,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1.1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 12
+   },
+   "DisplayName": "Question Mark Kick"
+  },
+  "Palm_Barrage": {
+   "StaminaCost": -1,
+   "Style": "Sumo",
+   "ClashPriority": 1,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 60,
+    "Range": 6,
+    "Power": 23
+   },
+   "DisplayName": "Palm Barrage"
+  },
+  "Write_em_all_down": {
+   "StaminaCost": -1,
+   "Style": "The_Middle",
+   "HyperArmour": true,
+   "ClashPriority": 1,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1.1,
+    "Cooldown": 45,
+    "Range": 10,
+    "Power": 18
+   },
+   "DisplayName": "Write 'em All Down"
+  },
+  "WhirlwindSpin": {
+   "ClashPriority": 1,
+   "DisplayName": "Whirlwind Spin",
+   "StaminaCost": -1,
+   "Style": "Taekwondo",
+   "HyperArmour": true,
+   "IsPure": true,
+   "IsExtender": true,
+   "SkillData": {
+    "Speed": 1.15,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 15
+   },
+   "Cooldown": 30
+  },
+  "Promised_Suffering": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "The_Middle",
+   "GrabSkill": true,
+   "Cooldown": 50,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 50,
+    "Range": 4.5,
+    "Power": 22
+   },
+   "DisplayName": "Promised Suffering"
+  },
+  "Ravage": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "KJ",
+   "GrabSkill": true,
+   "Cooldown": 80,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 80,
+    "Range": 6,
+    "Power": 23
+   },
+   "DisplayName": "Ravage"
+  },
+  "Spinning_Backfist": {
+   "StaminaCost": -1,
+   "Style": "Kickboxing",
+   "ClashPriority": 1,
+   "Cooldown": 60,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 18
+   },
+   "DisplayName": "Spinning Backfist"
+  },
+  "Roundhouse_Kick": {
+   "StaminaCost": -1,
+   "Style": "Muay_Thai",
+   "IsExtender": true,
+   "ClashPriority": 1,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1.1,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 12
+   },
+   "DisplayName": "Roundhouse Kick"
+  },
+  "Triple_Kick": {
+   "StaminaCost": -1,
+   "Style": "Taekwondo",
+   "ClashPriority": 1,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 0.8,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 15
+   },
+   "DisplayName": "Triple Kick"
+  },
+  "WarAxeSlam": {
+   "StaminaCost": 0,
+   "DisplayName": "War Axe Slam",
+   "IgnoreOffensiveCheck": true,
+   "Cooldown": 0,
+   "ClashPriority": 999,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 0,
+    "Range": 6,
+    "Power": 15
+   },
+   "Silenceable": false
+  },
+  "Predictive_Strikes": {
+   "StaminaCost": -1,
+   "Style": "Demon_Fist",
+   "ClashPriority": 1,
+   "Cooldown": 35,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 25
+   },
+   "DisplayName": "Predictive Strikes"
+  },
+  "Thunderclap": {
+   "StaminaCost": -1,
+   "Style": "Raishin",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 40,
+    "Range": 5,
+    "Power": 17.2
+   },
+   "DisplayName": "Thunderclap"
+  },
+  "Pure_Taekwondo": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Taekwondo",
+   "GrabSkill": true,
+   "Cooldown": 22,
+   "IFrame": true,
+   "SkillData": {
+    "Speed": 0,
+    "Cooldown": 0,
+    "Range": 0,
+    "Power": 0
+   },
+   "DisplayName": "Pure Taekwondo"
+  },
+  "Six_Seiken": {
+   "StaminaCost": -1,
+   "Style": "Karate",
+   "ClashPriority": 2,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 15
+   },
+   "DisplayName": "Six Seiken"
+  },
+  "Oblique_Kick": {
+   "StaminaCost": -1,
+   "Style": "Kickboxing",
+   "IsExtender": true,
+   "ClashPriority": 1,
+   "Cooldown": 50,
+   "SkillData": {
+    "Speed": 1.5,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 14
+   },
+   "DisplayName": "Oblique Kick"
+  },
+  "Rolling": {
+   "StaminaCost": -1,
+   "Style": "Kickboxing",
+   "ClashPriority": 1,
+   "Cooldown": 40,
+   "SkillData": {
+    "Speed": 1.4,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 16
+   },
+   "DisplayName": "Rolling"
+  },
+  "StarDrop": {
+   "ClashPriority": 1,
+   "StaminaCost": -1,
+   "Style": "Aikido",
+   "IFrame": true,
+   "Cooldown": 30,
+   "CounterSkill": true,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 5,
+    "Power": 16.5
+   },
+   "DisplayName": "Star Drop"
+  },
+  "Right_Koken": {
+   "StaminaCost": -1,
+   "Style": "Karate",
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 15
+   },
+   "DisplayName": "Right Koken"
+  },
+  "Swift_Kick": {
+   "StaminaCost": -1,
+   "Style": "Kickboxing",
+   "IsExtender": true,
+   "ClashPriority": 1,
+   "Cooldown": 45,
+   "SkillData": {
+    "Speed": 1.3,
+    "Cooldown": 35,
+    "Range": 6,
+    "Power": 16
+   },
+   "DisplayName": "Swift Kick"
+  },
+  "Tatsumaki": {
+   "StaminaCost": -1,
+   "Style": "Street_Fighter",
+   "IsExtender": true,
+   "ClashPriority": 2,
+   "Cooldown": 35,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 35,
+    "Range": 7,
+    "Power": 13
+   },
+   "DisplayName": "Tatsumaki"
+  },
+  "Spinning_Elbow": {
+   "StaminaCost": -1,
+   "Style": "Muay_Thai",
+   "HyperArmour": true,
+   "ClashPriority": 1,
+   "Cooldown": 30,
+   "SkillData": {
+    "Speed": 1,
+    "Cooldown": 30,
+    "Range": 6,
+    "Power": 15
+   },
+   "DisplayName": "Spinning Elbow"
+  }
+ }
+}

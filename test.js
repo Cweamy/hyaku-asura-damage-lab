@@ -57,8 +57,8 @@ var tm = HU.getStyle("The_Middle");
 var stats = HU.state.stats; // default balanced build
 var m1 = C.ComputeM1Damage({ style: tm, stats: stats, basicAttackDmg: 1 });
 var m2 = C.ComputeM2Damage({ style: tm, stats: stats, criticalDmg: 1 });
-closeTo(m1, 248.88, 0.02, "The_Middle M1 = 248.88");
-closeTo(m2, 278.74, 0.02, "The_Middle M2 = 278.74");
+closeTo(m1, 277.40, 0.02, "The_Middle M1 = 277.40");
+closeTo(m2, 310.68, 0.02, "The_Middle M2 = 310.68");
 
 // 2. structural integrity (hard failures)
 console.log("\nStructural integrity:");

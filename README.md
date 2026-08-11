@@ -57,18 +57,23 @@ python -m http.server 8000
 `data.js` is a snapshot of the live `CombatCalcsData`. Whenever combat data changes in Studio,
 **re-export it** — do not hand-edit `data.js` as a second source of truth.
 
-Export the styles/skills block as a JS object and write it into `window.HYAKU_DATA` with the
-same structure `data.js` already uses. After exporting:
-
-1. `node --check data.js`
-2. **Bump `DATA_VERSION`** in `data.js` so existing share links are flagged as stale.
-3. Open the page and spot-check: default stats, The_Middle M1/M2 damage, one skill's damage.
-4. Update the "as of" date in `index.html` and the footer.
+1. In Studio, require the module and serialize `{ Styles, SkillScaling, Skills, stageData }` to JSON
+   (see the Luau serializer snippet in `export-data.js` header; `stageData` is optional — it maps
+   each skill to `{ hits, sum }` read from the live `SkillReg.<Skill>` modules, where `hits` is the
+   number of `DealDamage` applications per Activate and `sum` is the total damage-ratio multiplier
+   dealt), save it as `combat-calcs-data.dump.json`.
+2. `node export-data.js combat-calcs-data.dump.json` — replaces the styles / skillScaling /
+   skills / stageData blocks, preserves site-only entries (Jujutsu, Rushing_Kick, ...), keeps the
+   skill annotations the module doesn't carry (StaminaCost, GrabSkill, IFrame, ...), bumps
+   `DATA_VERSION`, and cross-verifies every dump value.
+3. `node --check data.js` and `node test.js`.
+4. Open the page and spot-check: default stats, The_Middle M1/M2 damage, one skill's damage.
+5. Update the "as of" date in `index.html` and the footer.
 
 ## Verifying calc parity
 
 `calc.js` formulas were smoke-tested in Node against the Lua sources
-(e.g. `EffectiveStat(2000 Strength) = 1725`, The_Middle M1 = 248.88, M2 = 278.74,
+(e.g. `EffectiveStat(2000 Strength) = 1725`, The_Middle M1 = 277.40, M2 = 310.68,
 hit-count decay, stamina drains).
 
 There is an automated suite that locks this down and checks data integrity:
