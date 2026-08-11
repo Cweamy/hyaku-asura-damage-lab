@@ -173,33 +173,30 @@ window.HyakuCalc = (function () {
     return Base * Mult * Attr;
   }
 
-  // CombatCalculation.GetStamDrain
-  function statPoints(value, divisor, cap) {
-    if (!divisor || divisor <= 0) return 0;
-    var pts = value / divisor;
-    return cap ? Math.min(pts, cap) : pts;
-  }
-
+  // CombatCalculation.GetM1StamDrain / GetM2StamDrain (2026-08-11: the old
+  // StaminaScaling-based GetStamDrain had no live equivalent; StaminaScaling is
+  // dead data in the live codebase. Attack "M1" -> GetM1StamDrain, else GetM2StamDrain).
   function GetStamDrain(Opts) {
     var O = Opts || {};
     var Style = O.style || O.styleName;
     var Stats = O.stats;
-    var Attack = O.attack || "M1";
     if (!Style || !Stats) return 0;
-
-    var Scaling = Style.StaminaScaling || {};
-    var Cap = Style.StaminaScalingCap || {};
-
-    var Flat = Style[Attack + "StaminaCost"] != null ? Style[Attack + "StaminaCost"] : (Attack === "M2" ? 40 : 30);
-
-    var drain = Flat
-      + statPoints(EffectiveStat(ReadStat(Stats, "Muscle"), StatLimits.Muscle), Scaling.Muscle || 40, Cap.Muscle)
-      + statPoints(EffectiveStat(ReadStat(Stats, "Strength"), StatLimits.Strength), Scaling.Strength || 30, Cap.Strength || 60)
-      + statPoints(EffectiveStat(ReadStat(Stats, "Fat"), StatLimits.Fat), Scaling.Fat || 40, Cap.Fat)
-      // Mirrors live code: divisor is Cap.AttackSpeed (nil for every style -> term is 0).
-      + statPoints(EffectiveStat(ReadStat(Stats, "AttackSpeed"), StatLimits.AttackSpeed), Cap.AttackSpeed);
-
-    return drain;
+    var MaxStam = ReadStat(Stats, "MaxStamina");
+    var Muscle = ReadStat(Stats, "Muscle");
+    var Strength = ReadStat(Stats, "Strength");
+    var Fat = ReadStat(Stats, "Fat");
+    if ((O.attack || "M1") === "M2") {
+      var Pct2 = M2BaseDrainPct
+        + clamp(Muscle / 3000, 0, 2.5) * M2MuscleDrainPct
+        + clamp(Strength / 3000, 0, 2.5) * M2StrengthDrainPct
+        + clamp(Fat / 1500, 0, 2.5) * M2FatDrainPct;
+      return MaxStam * Pct2 + (Style.M2StaminaCost != null ? Style.M2StaminaCost : 6.5);
+    }
+    var Pct1 = M1BaseDrainPct
+      + clamp(Muscle / 6000, 0, 2.5) * M1MuscleDrainPct
+      + clamp(Strength / 3000, 0, 2.5) * M1StrengthDrainPct
+      + clamp(Fat / 1500, 0, 2.5) * M1FatDrainPct;
+    return MaxStam * Pct1 + (Style.M1StaminaCost != null ? Style.M1StaminaCost : 4);
   }
 
   function GetBlockHitStamDrain(Opts) {
@@ -291,8 +288,7 @@ window.HyakuCalc = (function () {
     var BulkStyleFloor = MaxScale * (1 - SizeRatio * AttackSpeedBulkStyleFloorDrop);
     var Final = Math.max(BulkStyleFloor, Calc);
     var Result = clamp(Final, AttackSpeedMinFinalSpeed, AttackSpeedMaxFinalSpeed);
-    var LeanSpeedMultiplier = VeryBig <= 500 ? 0.80 : 1;
-    return Result * LeanSpeedMultiplier * (1 - FatRatio * 0.10);
+    return Result * (1 - FatRatio * 0.10);
   }
 
   function GetAttackSpeedStunMultiplier(Stats) {
@@ -302,12 +298,14 @@ window.HyakuCalc = (function () {
     return clamp(1 - Progress * AttackSpeedMaxStunReduction, 1 - AttackSpeedMaxStunReduction, 1.0);
   }
 
-  // HitCount decay: N<=14 -> 1.0, then tiers of 9 -> -0.05, floor 0.65.
+  // HitCount decay: live 2026-08-11 curve: N<=9 -> 1.0, then tiers of 9 -> -0.08,
+  // floor 0.5. (Re-synced 2026-08-11; the site previously carried the old curve
+  // N<=14 -> -0.05 floor 0.65.)
   function GetHitCountDamageDecay(hitCount) {
     var N = Math.max(hitCount || 0, 0);
-    if (N <= 14) return 1.0;
+    if (N <= 9) return 1.0;
     var Tier = Math.floor((N - 1) / 9);
-    return Math.max(0.65, 1.0 - Tier * 0.05);
+    return Math.max(0.5, 1.0 - Tier * 0.08);
   }
 
   function GetMultiAttackerStunMultiplier(attackerCount) {

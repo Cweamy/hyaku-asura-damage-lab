@@ -76,7 +76,9 @@ python -m http.server 8000
 (e.g. `EffectiveStat(2000 Strength) = 1150`, The_Middle M1 = 216.7264, M2 = 242.733568,
 hit-count decay, stamina drains). Anchors were re-verified against the live
 `CombatCalculation` module on 2026-08-11 (post statLimits re-sync); see
-`../BALANCE_CHANGELOG.md`.
+`../BALANCE_CHANGELOG.md`. A full-matrix parity sweep (527 rows: 80 skills x 3 stat
+profiles, 25 styles' M1/M2 x 2 profiles, drains, defenses, attack-speed multipliers,
+decay/rhythm/landed) matches the live module exactly.
 
 There is an automated suite that locks this down and checks data integrity:
 

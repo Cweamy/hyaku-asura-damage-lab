@@ -77,6 +77,24 @@ skillCases.forEach(function (c) {
   closeTo(C.ComputeSkillDamage({ power: c[2], skill: { Style: c[1] }, stats: stats }), c[3], 1e-9, "ComputeSkillDamage " + c[0] + " = " + c[3]);
 });
 
+// Aux formulas, captured live from CombatCalculation 2026-08-11 at the default
+// build (GetM1StamDrain/GetM2StamDrain, GetHitCountDamageDecay curve, defenses,
+// ScaleGetASMultiplier at the lean profile P3, block/run drains, rhythm/landed).
+closeTo(C.GetStamDrain({ style: tm, stats: stats, attack: "M1" }), 6.326666666666666, 1e-9, "GetStamDrain M1 (The_Middle) = 6.326666666666666");
+closeTo(C.GetStamDrain({ style: tm, stats: stats, attack: "M2" }), 10.853333333333334, 1e-9, "GetStamDrain M2 (The_Middle) = 10.853333333333334");
+[10, 19, 50].forEach(function (n, i) {
+  closeTo(C.GetHitCountDamageDecay(n), [0.92, 0.84, 0.6][i], 1e-9, "GetHitCountDamageDecay(" + n + ") = " + [0.92, 0.84, 0.6][i]);
+});
+closeTo(C.GetDurabilityDefense(stats), 0.29411764705882356, 1e-9, "GetDurabilityDefense(P1) = 0.29411764705882356");
+closeTo(C.GetMuscleDefense(stats), 0.06, 1e-9, "GetMuscleDefense(P1) = 0.06");
+closeTo(C.GetFatDefense(stats), 0.0135, 1e-9, "GetFatDefense(P1) = 0.0135");
+closeTo(C.GetBlockHitStamDrain({ stats: stats, damage: 100 }), 5.635, 1e-9, "GetBlockHitStamDrain(P1, 100dmg) = 5.635");
+closeTo(C.GetRunStamDrain({ stats: stats, deltaTime: 1 / 60, boosted: false }), 0.02729166666666667, 1e-9, "GetRunStamDrain(P1) = 0.02729166666666667");
+var leanStats = { Strength: 800, Muscle: 150, Fat: 50, Agility: 600, AttackSpeed: 500, Durability: 300, MaxStamina: 100, StaminaInStat: 500 };
+closeTo(C.ScaleGetASMultiplier({ style: tm, stats: leanStats, isM2: false, attributes: {} }), 1.4182109391185845, 1e-9, "ScaleGetASMultiplier The_Middle P3 = 1.4182109391185845");
+closeTo(C.GetRhythmStamMul(50), 0.85, 1e-9, "GetRhythmStamMul(50) = 0.85");
+closeTo(C.GetSkillLandedStamMul(), 0.7, 1e-9, "GetSkillLandedStamMul() = 0.7");
+
 // 2. structural integrity (hard failures)
 console.log("\nStructural integrity:");
 var styles = new Set(Object.keys(D.styles || {}));
