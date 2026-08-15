@@ -1,6 +1,6 @@
 // ============================================================================
 // Hyaku Asura — Damage calc (mirror of game.ServerScriptService.Modules.CombatCalculation)
-// Source: live Roblox Studio module, 2026-08-10. Kept 1:1 with the Lua formulas.
+// Source: live Roblox Studio module, 2026-08-15. Kept 1:1 with the Lua formulas.
 // ============================================================================
 window.HyakuCalc = (function () {
   "use strict";
@@ -24,16 +24,6 @@ window.HyakuCalc = (function () {
 
   var MuscleStrengthNerfCap = C.MuscleStrengthNerfCap;
   var MuscleStrengthNerfRef = C.MuscleStrengthNerfRef;
-
-  var M1BaseDrainPct = 0.015;
-  var M1MuscleDrainPct = 0.005;
-  var M1StrengthDrainPct = 0.006;
-  var M1FatDrainPct = 0.013;
-
-  var M2BaseDrainPct = 0.025;
-  var M2MuscleDrainPct = 0.013;
-  var M2StrengthDrainPct = 0.010;
-  var M2FatDrainPct = 0.016;
 
   var RunBaseDrainPct = 0.010;
   var RunSizeDrainPct = 0.020;
@@ -173,30 +163,28 @@ window.HyakuCalc = (function () {
     return Base * Mult * Attr;
   }
 
-  // CombatCalculation.GetM1StamDrain / GetM2StamDrain (2026-08-11: the old
-  // StaminaScaling-based GetStamDrain had no live equivalent; StaminaScaling is
-  // dead data in the live codebase. Attack "M1" -> GetM1StamDrain, else GetM2StamDrain).
+  function statPoints(value, divisor, cap) {
+    if (!divisor || divisor <= 0) return 0;
+    var pts = value / divisor;
+    return cap != null ? Math.min(pts, cap) : pts;
+  }
+
+  // CombatCalculation.GetStamDrain
   function GetStamDrain(Opts) {
     var O = Opts || {};
     var Style = O.style || O.styleName;
     var Stats = O.stats;
     if (!Style || !Stats) return 0;
-    var MaxStam = ReadStat(Stats, "MaxStamina");
-    var Muscle = ReadStat(Stats, "Muscle");
-    var Strength = ReadStat(Stats, "Strength");
-    var Fat = ReadStat(Stats, "Fat");
-    if ((O.attack || "M1") === "M2") {
-      var Pct2 = M2BaseDrainPct
-        + clamp(Muscle / 3000, 0, 2.5) * M2MuscleDrainPct
-        + clamp(Strength / 3000, 0, 2.5) * M2StrengthDrainPct
-        + clamp(Fat / 1500, 0, 2.5) * M2FatDrainPct;
-      return MaxStam * Pct2 + (Style.M2StaminaCost != null ? Style.M2StaminaCost : 6.5);
-    }
-    var Pct1 = M1BaseDrainPct
-      + clamp(Muscle / 6000, 0, 2.5) * M1MuscleDrainPct
-      + clamp(Strength / 3000, 0, 2.5) * M1StrengthDrainPct
-      + clamp(Fat / 1500, 0, 2.5) * M1FatDrainPct;
-    return MaxStam * Pct1 + (Style.M1StaminaCost != null ? Style.M1StaminaCost : 4);
+    var Attack = O.attack || "M1";
+    var Scaling = Style.StaminaScaling || {};
+    var Cap = Style.StaminaScalingCap || {};
+    var Flat = Style[Attack + "StaminaCost"];
+    if (Flat == null) Flat = Attack === "M2" ? 40 : 30;
+    return Flat
+      + statPoints(EffectiveStat(ReadStat(Stats, "Muscle"), StatLimits.Muscle), Scaling.Muscle || 40, Cap.Muscle)
+      + statPoints(EffectiveStat(ReadStat(Stats, "Strength"), StatLimits.Strength), Scaling.Strength || 30, Cap.Strength != null ? Cap.Strength : 60)
+      + statPoints(EffectiveStat(ReadStat(Stats, "Fat"), StatLimits.Fat), Scaling.Fat || 40, Cap.Fat)
+      + statPoints(EffectiveStat(ReadStat(Stats, "AttackSpeed"), StatLimits.AttackSpeed) || 25, Cap.AttackSpeed);
   }
 
   function GetBlockHitStamDrain(Opts) {
@@ -288,7 +276,8 @@ window.HyakuCalc = (function () {
     var BulkStyleFloor = MaxScale * (1 - SizeRatio * AttackSpeedBulkStyleFloorDrop);
     var Final = Math.max(BulkStyleFloor, Calc);
     var Result = clamp(Final, AttackSpeedMinFinalSpeed, AttackSpeedMaxFinalSpeed);
-    return Result * (1 - FatRatio * 0.10);
+    var LeanSpeedMultiplier = VeryBig <= 500 ? 0.80 : 1;
+    return Result * LeanSpeedMultiplier * (1 - FatRatio * 0.10);
   }
 
   function GetAttackSpeedStunMultiplier(Stats) {
@@ -298,14 +287,12 @@ window.HyakuCalc = (function () {
     return clamp(1 - Progress * AttackSpeedMaxStunReduction, 1 - AttackSpeedMaxStunReduction, 1.0);
   }
 
-  // HitCount decay: live 2026-08-11 curve: N<=9 -> 1.0, then tiers of 9 -> -0.08,
-  // floor 0.5. (Re-synced 2026-08-11; the site previously carried the old curve
-  // N<=14 -> -0.05 floor 0.65.)
+  // HitCount decay: live 2026-08-15 curve.
   function GetHitCountDamageDecay(hitCount) {
     var N = Math.max(hitCount || 0, 0);
-    if (N <= 9) return 1.0;
+    if (N <= 14) return 1.0;
     var Tier = Math.floor((N - 1) / 9);
-    return Math.max(0.5, 1.0 - Tier * 0.08);
+    return Math.max(0.65, 1.0 - Tier * 0.05);
   }
 
   function GetMultiAttackerStunMultiplier(attackerCount) {
