@@ -206,8 +206,14 @@
         </div>
       </div>
       <div class="btnrow">
+        <button id="balStudioExport" class="btn primary" title="Copy a paste-ready brief telling Studio exactly which fields to change">Copy Studio change request</button>
         <button id="balClearAll" class="btn ghost">Clear all balance edits</button>
       </div>
+      <p class="hint">The change request lists every edit as a live Studio path with its current
+        and requested value, the expected damage impact at your test build, and the instructions
+        for applying it safely. Paste it to whoever (or whatever) edits the place.</p>
+      <textarea id="studioExportText" class="mono" rows="10" spellcheck="false"
+        placeholder="The Studio change request appears here after you press the button."></textarea>
     </section>
 
     <!-- ============ Analysis ============ -->
@@ -284,6 +290,7 @@
   <script src="data.js"></script>
   <script src="calc.js"></script>
   <script src="util.js"></script>
+  <script src="studio-export.js"></script>
   <script src="render.js"></script>
   <script src="app.js"></script>
 </body>

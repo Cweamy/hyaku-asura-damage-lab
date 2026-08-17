@@ -95,10 +95,24 @@ window.HU = (function () {
     return out;
   }
 
+  // Local calendar date (YYYY-MM-DD). Used for stamping exports; toISOString()
+  // would report UTC and can disagree with the changelog by a day.
+  function localDate() {
+    var d = new Date();
+    function pad(n) { return String(n).length < 2 ? "0" + n : String(n); }
+    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+
   function getSkill(key) {
     var live = DATA.skills[key] || {};
     var ov = state.overrides[key] || {};
     var out = Object.assign({}, live, { SkillData: Object.assign({}, live.SkillData || {}) });
+    // The cooldown the game actually enforces is the top-level Skills.<X>.Cooldown
+    // (VarManager CalculateSkillStats → PickCD). SkillData.Cooldown is only the
+    // per-upgrade base and disagrees on 36 of 97 skills — Spinning_Backfist reads
+    // 35 there but is 60 in game. Surface the enforced value so the tool, the DPS
+    // and TTK models, and the Balance Lab all talk about the same number.
+    if (typeof live.Cooldown === "number") out.SkillData.Cooldown = live.Cooldown;
     Object.keys(SD_FIELDS).forEach(function (f) {
       var v = ov[f];
       if (v !== "" && v != null) out.SkillData[SD_FIELDS[f]] = Number(v);
@@ -244,7 +258,7 @@ window.HU = (function () {
     DEFAULT_STATS: DEFAULT_STATS, DEFAULT_MULTS: DEFAULT_MULTS, DEFAULT_SCN: DEFAULT_SCN, DEFAULT_ANA: DEFAULT_ANA,
     SCALING_FIELDS: SCALING_FIELDS, SD_FIELDS: SD_FIELDS, STYLE_EDIT_FIELDS: STYLE_EDIT_FIELDS, ANA_TABS: ANA_TABS,
     state: state,
-    esc: esc, fmt: fmt, numOr: numOr, styleLabel: styleLabel,
+    esc: esc, fmt: fmt, numOr: numOr, styleLabel: styleLabel, localDate: localDate,
     getStyle: getStyle, getSkill: getSkill, stageOf: stageOf,
     effHits: effHits, effRatio: effRatio,
     getScaling: getScaling, hasScalingOverride: hasScalingOverride, isListable: isListable,

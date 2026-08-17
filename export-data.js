@@ -97,6 +97,10 @@ const SKILL_ORDER = [
   "SkillData", "Stages",
 ];
 
+// Per-skill badge flags render.js shows. The dump resolves these to their live
+// runtime value in `EffectiveFlags`, and they are applied authoritatively.
+const DISPLAY_FLAGS = ["HyperArmour", "GrabSkill", "CounterSkill", "IFrame"];
+
 const SKILLDATA_ORDER = ["Cooldown", "Power", "Range", "Speed"];
 const AFFECT_ORDER = ["Power", "Speed", "Cooldown", "PerUpgrade", "ScaleBy"];
 const STAGE_ORDER = ["DamageRatio", "Stun", "Ragdoll", "Blockbreak", "IFrame"];
@@ -241,6 +245,31 @@ function main() {
       delete mergedSkills[s].Range;
       delete mergedSkills[s].Speed;
     }
+  }
+
+  // Badge flags are authoritative, not merge-preserved. A skill's runtime value
+  // is its SkillReg module field overridden by CombatCalcsData, which the dump
+  // resolves into EffectiveFlags — so absent means "off live", and preserving an
+  // old `true` would keep showing a flag that was removed in a balance pass
+  // (Whirl Slam / Write 'em All Down still advertised hyperarmor this way).
+  if (dump.EffectiveFlags) {
+    const cleared = [];
+    for (const s of dumpSkills) {
+      const live = dump.EffectiveFlags[s] || {};
+      for (const flag of DISPLAY_FLAGS) {
+        if (live[flag] === true) {
+          mergedSkills[s][flag] = true;
+        } else if (dump.Skills[s][flag] !== undefined) {
+          // CombatCalcsData states it explicitly (e.g. HyperArmour = false) — keep
+          // the dumped value so the dump/data.js invariant still holds.
+          mergedSkills[s][flag] = dump.Skills[s][flag];
+        } else if (mergedSkills[s][flag] !== undefined) {
+          if (mergedSkills[s][flag] === true) cleared.push(s + "." + flag);
+          delete mergedSkills[s][flag];
+        }
+      }
+    }
+    if (cleared.length) console.log("Cleared stale flags: " + cleared.join(", "));
   }
 
   // stageData: dump values win; site-only entries (skills with no SkillReg

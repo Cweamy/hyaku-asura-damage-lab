@@ -20,6 +20,7 @@ analysis target) is encoded into a shareable config in the URL hash (`#cfg=...`)
 | `util.js` | Shared logic & state: `window.HU` — helpers, single mutable `state`, data verification, damage cache |
 | `calc.js` | 1:1 port of `CombatCalculation` (window.HyakuCalc) |
 | `data.js` | Static snapshot of `CombatCalcsData` (window.HYAKU_DATA) with a `DATA_VERSION` field |
+| `studio-export.js` | Balance edits → Studio change request; loaded by the page and by the CLI |
 
 ## Architecture notes
 
@@ -52,23 +53,78 @@ python -m http.server 8000
 1. Create a repo and push the `website/` folder contents to a `gh-pages` branch (or the default branch and enable Pages).
 2. Share links are self-contained (`https://<user>.github.io/<repo>/#cfg=...`) — no backend needed.
 
+## The two directions
+
+The site mirrors Studio; Studio is the source of truth. Data moves both ways, and each
+direction has its own tool.
+
+```
+Studio ──studio-dump.luau──▶ combat-calcs-data.dump.json ──export-data.js──▶ data.js
+Studio ◀── (a human/agent applies it) ◀── studio change request ◀──studio-export.js── Balance Lab
+```
+
+| Tool | Runs in | Does |
+| --- | --- | --- |
+| `studio-dump.luau` | Studio | Serializes the live `CombatCalcsData` (+ resolved `EffectiveFlags`) to JSON |
+| `export-data.js` | node | Writes that dump into `data.js` and cross-verifies every value |
+| `dump-digest.js` | node | Cheap drift check: is the site still identical to live? |
+| `parity-sweep.luau` | Studio | Runs 552 formula rows through the live `CombatCalculation` |
+| `parity-check.js` | node | Runs the same rows through `calc.js` and diffs them |
+| `studio-export.js` | both | Turns Balance Lab edits into a Studio change request |
+| `export-studio.js` | node | CLI wrapper for the above (takes a share code) |
+| `apply-balance.js` | node | Writes a tested share config into `data.js` directly |
+
+## Checking for drift (do this first)
+
+Before trusting the site, confirm it still matches the game:
+
+1. Run `studio-dump.luau` with `MODE = "digest"` in Studio, save the output to a file.
+2. `node dump-digest.js --data --compare <that file>` — prints `IN SYNC`, or names every
+   entry that drifted.
+3. Run `parity-sweep.luau` in Studio (default `MODE = "hash"`) and compare with
+   `node parity-check.js`. Equal hashes mean all 552 formula rows match. If not, rerun the
+   sweep with `MODE = "rows"`, save it, and `node parity-check.js --live <file>` to see
+   exactly which formula moved.
+
 ## Re-exporting live data (IMPORTANT)
 
 `data.js` is a snapshot of the live `CombatCalcsData`. Whenever combat data changes in Studio,
 **re-export it** — do not hand-edit `data.js` as a second source of truth.
 
-1. In Studio, require the module and serialize `{ Styles, SkillScaling, Skills, stageData }` to JSON
-   (see the Luau serializer snippet in `export-data.js` header; `stageData` is optional — it maps
-   each skill to `{ hits, sum }` read from the live `SkillReg.<Skill>` modules, where `hits` is the
-   number of `DealDamage` applications per Activate and `sum` is the total damage-ratio multiplier
-   dealt), save it as `combat-calcs-data.dump.json`.
+1. Run `studio-dump.luau` in Studio with `MODE = "json"` (Command Bar or the Roblox MCP's
+   `execute_luau`) and save the output as `combat-calcs-data.dump.json`. It emits
+   `{ Styles, SkillScaling, Skills, EffectiveFlags }`. `stageData` is deliberately not dumped —
+   it is hand-derived from the `SkillReg.<Skill>` modules (`hits` = `DealDamage` applications per
+   Activate, `sum` = total damage-ratio multiplier) and the existing block is kept.
 2. `node export-data.js combat-calcs-data.dump.json` — replaces the styles / skillScaling /
-   skills / stageData blocks, preserves site-only entries (Jujutsu, Rushing_Kick, ...), keeps the
-   skill annotations the module doesn't carry (StaminaCost, GrabSkill, IFrame, ...), bumps
+   skills / stageData blocks, preserves site-only entries, applies `EffectiveFlags`
+   authoritatively (so a flag removed in a balance pass is cleared, not preserved), bumps
    `DATA_VERSION`, and cross-verifies every dump value.
 3. `node --check data.js` and `node test.js`.
 4. Open the page and spot-check: default stats, The_Middle M1/M2 damage, one skill's damage.
 5. Update the "as of" date in `index.html` and the footer.
+
+## Sending balance changes back to Studio
+
+Tune values in the Balance Lab, then press **Copy Studio change request**. You get a
+paste-ready brief containing:
+
+- the instruction prompt (target module, read-before-write, what not to touch, how to verify,
+  and how to re-sync the mirror afterwards);
+- every edit as a real Studio path with its live value, the requested value, and the delta;
+- the expected damage/drain impact at your test build;
+- anything that needs a decision instead of an edit (e.g. a hit-count change, which lives in a
+  `SkillReg` module rather than in data);
+- a JSON payload of the same changes.
+
+From a share link instead: `node export-studio.js "<share code>" -o studio-change-request.md`.
+
+**Two mapping traps the export already handles** — worth knowing when reading the game code:
+
+- A skill's *enforced* cooldown is `Skills.<Skill>.Cooldown`, not `SkillData.Cooldown`
+  (`VarManager.CalculateSkillStats` → `PickCD`). They disagree on 36 of 97 skills.
+- Damage numbers live in `CombatCalcsData`; behaviour (hyperarmor, i-frames, stun, ragdoll,
+  knockback, hit counts) lives in `VarManager.SkillReg.<Skill>`.
 
 ## Verifying calc parity
 

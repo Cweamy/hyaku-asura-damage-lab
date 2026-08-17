@@ -63,14 +63,16 @@ closeTo(m1, 246.153465, 0.02, "The_Middle M1 = 246.153465");
 closeTo(m2, 275.6918808, 0.02, "The_Middle M2 = 275.6918808");
 
 // Skill parity anchors, verified against the live module on 2026-08-15 at the
-// default build. Each case uses the live skill entry and skill-specific scaling.
+// default build; re-verified on 2026-08-17 after the balance pass (4 skills
+// re-anchored to post-pass scaling). Each case uses the live skill entry and
+// skill-specific scaling.
 closeTo(C.SkillStatMultiplier(null, stats), 4.5, 1e-9, "SkillStatMultiplier(nil) = 4.5 (legacy fallback)");
 var skillCases = [
-  ["Payback", 144.52231815],
-  ["Cranium_Break", 851.326875],
+  ["Payback", 245.991156525],
+  ["Cranium_Break", 410.85225],
   ["Avidya", 144.96559875],
-  ["Hadouken", 188.64916875],
-  ["Ravage", 371.50875],
+  ["Hadouken", 277.449975],
+  ["Ravage", 504.3796875],
 ];
 skillCases.forEach(function (c) {
   closeTo(C.ComputeSkillDamage({ skillName: c[0], skill: D.skills[c[0]], stats: stats }), c[1], 1e-9, "ComputeSkillDamage " + c[0] + " = " + c[1]);
@@ -79,15 +81,18 @@ skillCases.forEach(function (c) {
 // Aux formulas, verified against the live module on 2026-08-15 at the default
 // build (GetM1StamDrain/GetM2StamDrain, GetHitCountDamageDecay curve, defenses,
 // ScaleGetASMultiplier at the lean profile P3, block/run drains, rhythm/landed).
-closeTo(C.GetStamDrain({ style: tm, stats: stats, attack: "M1" }), 135.5, 1e-9, "GetStamDrain M1 (The_Middle) = 135.5");
+closeTo(C.GetStamDrain({ style: tm, stats: stats, attack: "M1" }), 140, 1e-9, "GetStamDrain M1 (The_Middle) = 140");
 closeTo(C.GetStamDrain({ style: tm, stats: stats, attack: "M2" }), 147, 1e-9, "GetStamDrain M2 (The_Middle) = 147");
+// Re-anchored 2026-08-18 from the live module: the decay free-window is 5 hits,
+// not 14, so 10 hits already sits in tier 1 (0.95).
 [10, 19, 50].forEach(function (n, i) {
-  closeTo(C.GetHitCountDamageDecay(n), [1, 0.9, 0.75][i], 1e-9, "GetHitCountDamageDecay(" + n + ") = " + [1, 0.9, 0.75][i]);
+  closeTo(C.GetHitCountDamageDecay(n), [0.95, 0.9, 0.75][i], 1e-9, "GetHitCountDamageDecay(" + n + ") = " + [0.95, 0.9, 0.75][i]);
 });
 closeTo(C.GetDurabilityDefense(stats), 0.29411764705882356, 1e-9, "GetDurabilityDefense(P1) = 0.29411764705882356");
 closeTo(C.GetMuscleDefense(stats), 0.06, 1e-9, "GetMuscleDefense(P1) = 0.06");
 closeTo(C.GetFatDefense(stats), 0.0135, 1e-9, "GetFatDefense(P1) = 0.0135");
-closeTo(C.GetBlockHitStamDrain({ stats: stats, damage: 100 }), 5.635, 1e-9, "GetBlockHitStamDrain(P1, 100dmg) = 5.635");
+// Re-anchored 2026-08-18: live block drain constants are 0.12 / 0.40 (were 0.18 / 0.49).
+closeTo(C.GetBlockHitStamDrain({ stats: stats, damage: 100 }), 3.16, 1e-9, "GetBlockHitStamDrain(P1, 100dmg) = 3.16");
 closeTo(C.GetRunStamDrain({ stats: stats, deltaTime: 1 / 60, boosted: false }), 0.02729166666666667, 1e-9, "GetRunStamDrain(P1) = 0.02729166666666667");
 var leanStats = { Strength: 800, Muscle: 150, Fat: 50, Agility: 600, AttackSpeed: 500, Durability: 300, MaxStamina: 100, StaminaInStat: 500 };
 closeTo(C.ScaleGetASMultiplier({ style: tm, stats: leanStats, isM2: false, attributes: {} }), 1.0629886500857986, 1e-9, "ScaleGetASMultiplier The_Middle P3 = 1.0629886500857986");

@@ -182,7 +182,11 @@ window.HyakuCalc = (function () {
     if (Flat == null) Flat = Attack === "M2" ? 40 : 30;
     return Flat
       + statPoints(EffectiveStat(ReadStat(Stats, "Muscle"), StatLimits.Muscle), Scaling.Muscle || 40, Cap.Muscle)
-      + statPoints(EffectiveStat(ReadStat(Stats, "Strength"), StatLimits.Strength), Scaling.Strength || 30, Cap.Strength != null ? Cap.Strength : 60)
+      // Deliberately uncapped: live calls statPoints(value, divisor) with no cap
+      // argument (CombatCalculation:364), so StaminaScalingCap.Strength = 60 is
+      // dead data in the game. The site used to apply it and under-reported the
+      // drain for high-Strength builds (Basic P2: 159.25 vs the live 186.75).
+      + statPoints(EffectiveStat(ReadStat(Stats, "Strength"), StatLimits.Strength), Scaling.Strength || 30)
       + statPoints(EffectiveStat(ReadStat(Stats, "Fat"), StatLimits.Fat), Scaling.Fat || 40, Cap.Fat)
       + statPoints(EffectiveStat(ReadStat(Stats, "AttackSpeed"), StatLimits.AttackSpeed) || 25, Cap.AttackSpeed);
   }
@@ -195,14 +199,16 @@ window.HyakuCalc = (function () {
     var Dura = ReadStat(Stats, "Durability");
     var EffDura = EffectiveStat(Dura, StatLimits.Durability);
     var Resist = 1 / (1 + EffDura / 1500);
-    var DrainPct = (Math.max(0.5, Damage * 0.18) * Resist + 0.7) * 0.49;
+    // Live 2026-08-18 constants (CombatCalculation:379): damage coefficient 0.12
+    // and overall 0.40, down from 0.18 / 0.49.
+    var DrainPct = (Math.max(0.5, Damage * 0.12) * Resist + 0.7) * 0.40;
 
     var DefenderMuscle = ReadStat(Stats, "Muscle");
     var AttackerMuscle = O.attackerStats ? ReadStat(O.attackerStats, "Muscle") : undefined;
     if (AttackerMuscle != null && AttackerMuscle > 240 && DefenderMuscle <= 240) DrainPct *= 1.10;
     else if (AttackerMuscle != null && AttackerMuscle <= 240 && DefenderMuscle > 240) DrainPct *= 0.85;
 
-    return DrainPct;
+    return Math.min(DrainPct, 20); // live clamps the per-hit block drain
   }
 
   function GetRunStamDrain(Opts) {
@@ -287,10 +293,12 @@ window.HyakuCalc = (function () {
     return clamp(1 - Progress * AttackSpeedMaxStunReduction, 1 - AttackSpeedMaxStunReduction, 1.0);
   }
 
-  // HitCount decay: live 2026-08-15 curve.
+  // HitCount decay: live 2026-08-18 curve (CombatCalculation:479).
+  // The free-hit threshold is 5, not 14 — decay starts biting at 10 hits
+  // (Tier 1 = 0.95), which the old 14 masked for the 10..14 range.
   function GetHitCountDamageDecay(hitCount) {
     var N = Math.max(hitCount || 0, 0);
-    if (N <= 14) return 1.0;
+    if (N <= 5) return 1.0;
     var Tier = Math.floor((N - 1) / 9);
     return Math.max(0.65, 1.0 - Tier * 0.05);
   }

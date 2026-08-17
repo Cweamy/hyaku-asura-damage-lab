@@ -410,6 +410,31 @@ window.HU.app = (function () {
       state.overrides = {}; state.styleOverrides = {};
       render.renderAll(); status("All balance edits cleared.", true);
     });
+
+    var se = $("balStudioExport"); if (se) se.addEventListener("click", exportForStudio);
+  }
+
+  // Turn the current balance edits into a Studio change request: exact module
+  // paths, live vs requested values, expected impact, and the instructions for
+  // applying it. See studio-export.js for the field→path mapping.
+  function exportForStudio() {
+    if (!HU.studioExport) return status("studio-export.js did not load.", false);
+    var cfg = buildConfig();
+    if (!Object.keys(cfg.over || {}).length && !Object.keys(cfg.sover || {}).length) {
+      return status("No balance edits to export — change a value first.", false);
+    }
+    var doc;
+    try {
+      doc = HU.studioExport(cfg, { date: HU.localDate ? HU.localDate() : undefined });
+    } catch (err) {
+      return status("Could not build the change request: " + err.message, false);
+    }
+    var box = $("studioExportText");
+    if (box) box.value = doc;
+    copyToClipboard(doc).then(
+      function () { status("Studio change request copied — paste it to whoever edits the place.", true); },
+      function () { status("Change request is in the box below — copy it manually.", false); }
+    );
   }
 
   // Scale every editable numeric field of a skill by (1 + pct/100), seeding from
@@ -474,21 +499,24 @@ window.HU.app = (function () {
 
   // ---------------- share buttons ----------------
 
-  function bindShare() {
-    function copyText(text) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(text);
-      }
-      return new Promise(function (resolve) {
-        var ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand("copy"); } catch (e) { /* noop */ }
-        document.body.removeChild(ta);
-        resolve();
-      });
+  // Shared by the share buttons and the Balance Lab's Studio export.
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
     }
+    return new Promise(function (resolve) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) { /* noop */ }
+      document.body.removeChild(ta);
+      resolve();
+    });
+  }
+
+  function bindShare() {
+    var copyText = copyToClipboard;
     function doShare() {
       var code = shareCode();
       setHash(code);
