@@ -8,7 +8,7 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.8,
-      "BaseDamageM1": 18.8,
+      "BaseDamageM1": 17.2,
       "BaseStun": 0.7,
       "LowerMuscleScaling": 2.4,
       "StaminaScaling": {
@@ -28,7 +28,7 @@
       "AttackSpeedScaling": 0,
       "M1RangeMul": 1,
       "Endlag": 0.7,
-      "BaseDamageM2": 19.6,
+      "BaseDamageM2": 17.7,
       "FatScaling": 0.01,
       "UpperMuscleScaling": 2.4,
       "AgilityScaling": 0,
@@ -87,7 +87,7 @@
       ],
       "M1StaminaCost": 37,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.78,
+      "StrengthScaling": 0.76,
       "M2Speed": 1.3,
       "M1Speed": 1.32,
       "M2Range": "Above Average",
@@ -103,9 +103,9 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.9,
-      "BaseDamageM1": 18,
+      "BaseDamageM1": 15.5,
       "BaseStun": 0.7,
-      "LowerMuscleScaling": 2.7,
+      "LowerMuscleScaling": 2,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -122,9 +122,9 @@
       "AttackSpeedScaling": 0,
       "M1RangeMul": 1,
       "Endlag": 0.6,
-      "BaseDamageM2": 22,
+      "BaseDamageM2": 19.5,
       "FatScaling": 0.1,
-      "UpperMuscleScaling": 2.7,
+      "UpperMuscleScaling": 2,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -132,15 +132,15 @@
         0,
         1.3
       ],
-      "M1StaminaCost": 30,
+      "M1StaminaCost": 38,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.65,
+      "StrengthScaling": 0.7,
       "M2Speed": 1,
       "M1Speed": 0.95,
       "M2Range": "Above Average",
       "M1Range": "High",
       "M2Cooldown": 2.4,
-      "M2StaminaCost": 40
+      "M2StaminaCost": 48
     },
     "Taekwondo": {
       "M1ComboLifes": [
@@ -197,9 +197,9 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.9,
-      "BaseDamageM1": 18,
-      "BaseStun": 0.425,
-      "LowerMuscleScaling": 3,
+      "BaseDamageM1": 15,
+      "BaseStun": 0.6,
+      "LowerMuscleScaling": 2.3,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -216,9 +216,9 @@
       "AttackSpeedScaling": 0,
       "M1RangeMul": 1,
       "Endlag": 0.6,
-      "BaseDamageM2": 22,
+      "BaseDamageM2": 19,
       "FatScaling": 0.1,
-      "UpperMuscleScaling": 2.1,
+      "UpperMuscleScaling": 2.26,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -228,9 +228,9 @@
       ],
       "M1StaminaCost": 30,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.65,
-      "M2Speed": 0.9,
-      "M1Speed": 0.95,
+      "StrengthScaling": 0.72,
+      "M2Speed": 0.99,
+      "M1Speed": 1.045,
       "M2Range": "Above Average",
       "M1Range": "High",
       "M2Cooldown": 2.4,
@@ -293,7 +293,7 @@
       "MaxAttackSpeedScale": 0.8,
       "BaseDamageM1": 16,
       "BaseStun": 0.7,
-      "LowerMuscleScaling": 2.35,
+      "LowerMuscleScaling": 2.1,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -312,7 +312,7 @@
       "Endlag": 0.7,
       "BaseDamageM2": 15.5,
       "FatScaling": 0.01,
-      "UpperMuscleScaling": 2.6,
+      "UpperMuscleScaling": 2.2,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -338,9 +338,9 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.9,
-      "BaseDamageM1": 18,
-      "BaseStun": 0.5,
-      "LowerMuscleScaling": 2.7,
+      "BaseDamageM1": 15,
+      "BaseStun": 0.55,
+      "LowerMuscleScaling": 2.2,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -357,9 +357,9 @@
       "AttackSpeedScaling": 0,
       "M1RangeMul": 1,
       "Endlag": 0.5,
-      "BaseDamageM2": 22,
-      "FatScaling": 0.1,
-      "UpperMuscleScaling": 2.5,
+      "BaseDamageM2": 19,
+      "FatScaling": 0.01,
+      "UpperMuscleScaling": 2,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -367,15 +367,15 @@
         0,
         1.3
       ],
-      "M1StaminaCost": 30,
+      "M1StaminaCost": 33.5,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.65,
+      "StrengthScaling": 0.72,
       "M2Speed": 1,
-      "M1Speed": 0.95,
+      "M1Speed": 1.0925,
       "M2Range": "Above Average",
       "M1Range": "High",
       "M2Cooldown": 2.4,
-      "M2StaminaCost": 40
+      "M2StaminaCost": 48.5
     },
     "Basic": {
       "M1ComboLifes": [
@@ -622,7 +622,7 @@
       "MaxAttackSpeedScale": 0.8,
       "BaseDamageM1": 14.8,
       "BaseStun": 0.475,
-      "LowerMuscleScaling": 2.4,
+      "LowerMuscleScaling": 2.3,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -641,7 +641,7 @@
       "Endlag": 0.7,
       "BaseDamageM2": 16,
       "FatScaling": 0.02,
-      "UpperMuscleScaling": 2.4,
+      "UpperMuscleScaling": 2.3,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -667,9 +667,9 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.8,
-      "BaseDamageM1": 18,
+      "BaseDamageM1": 15.5,
       "BaseStun": 0.7,
-      "LowerMuscleScaling": 2.7,
+      "LowerMuscleScaling": 2.15,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -686,9 +686,9 @@
       "AttackSpeedScaling": 0,
       "M1RangeMul": 1,
       "Endlag": 0.5,
-      "BaseDamageM2": 22,
+      "BaseDamageM2": 18.5,
       "FatScaling": 0.04,
-      "UpperMuscleScaling": 2.7,
+      "UpperMuscleScaling": 2.15,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -698,9 +698,9 @@
       ],
       "M1StaminaCost": 30,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.65,
-      "M2Speed": 1,
-      "M1Speed": 0.95,
+      "StrengthScaling": 0.75,
+      "M2Speed": 1.15,
+      "M1Speed": 1.045,
       "M2Range": "Above Average",
       "M1Range": "High",
       "M2Cooldown": 2.4,
@@ -716,7 +716,7 @@
       "MaxAttackSpeedScale": 0.8,
       "BaseDamageM1": 14.5,
       "BaseStun": 0.5,
-      "LowerMuscleScaling": 2.3,
+      "LowerMuscleScaling": 2,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -735,7 +735,7 @@
       "Endlag": 0.6,
       "BaseDamageM2": 20.16,
       "FatScaling": 0.03,
-      "UpperMuscleScaling": 2.3,
+      "UpperMuscleScaling": 2,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -745,7 +745,7 @@
       ],
       "M1StaminaCost": 34,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.75,
+      "StrengthScaling": 0.77,
       "M2Speed": 0.95,
       "M1Speed": 1.21,
       "M2Range": "Above Average",
@@ -808,9 +808,9 @@
         1.4
       ],
       "MaxAttackSpeedScale": 1,
-      "BaseDamageM1": 17.75,
+      "BaseDamageM1": 16.8,
       "BaseStun": 0.73,
-      "LowerMuscleScaling": 2.7,
+      "LowerMuscleScaling": 1.6,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -827,9 +827,9 @@
       "AttackSpeedScaling": 0.2,
       "M1RangeMul": 1,
       "Endlag": 0.7,
-      "BaseDamageM2": 18.5,
+      "BaseDamageM2": 17.55,
       "FatScaling": 0.1,
-      "UpperMuscleScaling": 2.7,
+      "UpperMuscleScaling": 1.6,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -839,9 +839,9 @@
       ],
       "M1StaminaCost": 30,
       "ComboLife": 1.3,
-      "StrengthScaling": 0.675,
-      "M2Speed": 1.1,
-      "M1Speed": 0.9,
+      "StrengthScaling": 0.65,
+      "M2Speed": 0.935,
+      "M1Speed": 0.855,
       "M2Range": "High",
       "M1Range": "High",
       "M2Cooldown": 2.4,
@@ -855,7 +855,7 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.8,
-      "BaseDamageM1": 18.55,
+      "BaseDamageM1": 17.55,
       "BaseStun": 0.73,
       "LowerMuscleScaling": 2.3,
       "StaminaScaling": {
@@ -905,7 +905,7 @@
       "MaxAttackSpeedScale": 0.8,
       "BaseDamageM1": 13.6,
       "BaseStun": 0.5,
-      "LowerMuscleScaling": 2.8,
+      "LowerMuscleScaling": 2.5,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -950,9 +950,9 @@
         1.4
       ],
       "MaxAttackSpeedScale": 0.9,
-      "BaseDamageM1": 18,
-      "BaseStun": 0.4,
-      "LowerMuscleScaling": 2.7,
+      "BaseDamageM1": 15.3,
+      "BaseStun": 0.6,
+      "LowerMuscleScaling": 2.4,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -969,9 +969,9 @@
       "AttackSpeedScaling": 0,
       "M1RangeMul": 1,
       "Endlag": 0.6,
-      "BaseDamageM2": 22,
+      "BaseDamageM2": 17.3,
       "FatScaling": 0.1,
-      "UpperMuscleScaling": 2.7,
+      "UpperMuscleScaling": 2.4,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -999,7 +999,7 @@
       "MaxAttackSpeedScale": 0.8,
       "BaseDamageM1": 15.9,
       "BaseStun": 0.5,
-      "LowerMuscleScaling": 2.24,
+      "LowerMuscleScaling": 2.1,
       "StaminaScaling": {
         "AttackSpeed": 25,
         "Strength": 30,
@@ -1018,7 +1018,7 @@
       "Endlag": 0.7,
       "BaseDamageM2": 17,
       "FatScaling": 0.04,
-      "UpperMuscleScaling": 2.45,
+      "UpperMuscleScaling": 2.2,
       "AgilityScaling": 0,
       "M1ComboCooldowns": [
         0,
@@ -1490,7 +1490,7 @@
     "Iron_Breaker": {
       "StaminaCost": -1,
       "Style": "Niko",
-      "IsExtender": true,
+      "IsExtender": false,
       "SkillData": {
         "Speed": 1,
         "Range": 8,
@@ -2706,8 +2706,8 @@
       "AttackSpeedScaling": 0.5,
       "AgilityScaling": 1,
       "FatScaling": 0,
-      "LowerMuscleScaling": 1.9,
-      "UpperMuscleScaling": 1.87
+      "LowerMuscleScaling": 1.87,
+      "UpperMuscleScaling": 1.6
     },
     "Hardpoint": {
       "StrengthScaling": 2.3,
@@ -3178,7 +3178,7 @@
       "AttackSpeedScaling": 0.3,
       "AgilityScaling": 0.3,
       "FatScaling": 0,
-      "LowerMuscleScaling": 3,
+      "LowerMuscleScaling": 2,
       "UpperMuscleScaling": 0.5
     },
     "Kicking": {

@@ -59,9 +59,11 @@ var tm = HU.getStyle("The_Middle");
 var stats = HU.state.stats; // default balanced build
 var m1 = C.ComputeM1Damage({ style: tm, stats: stats, basicAttackDmg: 1 });
 var m2 = C.ComputeM2Damage({ style: tm, stats: stats, criticalDmg: 1 });
-closeTo(m1, 246.153465, 0.02, "The_Middle M1 = 246.153465");
-closeTo(m2, 275.6918808, 0.02, "The_Middle M2 = 275.6918808");
+closeTo(m1, 234.7591275, 0.02, "The_Middle M1 = 234.7591275");
+closeTo(m2, 262.9302228, 0.02, "The_Middle M2 = 262.9302228");
 
+// M1/M2 anchors above re-verified against the live CombatCalculation on
+// 2026-08-18 after the style balance pass (The_Middle muscle scaling changed).
 // Skill parity anchors, verified against the live module on 2026-08-15 at the
 // default build; re-verified on 2026-08-17 after the balance pass (4 skills
 // re-anchored to post-pass scaling). Each case uses the live skill entry and
